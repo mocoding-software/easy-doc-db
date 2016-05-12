@@ -15,8 +15,8 @@ namespace Mocoding.EasyDocDb.Tests
 
     public class Address
     {
-        public string Street;
+        public string Street { get; set; }
 
-        public string City;
+        public string City { get; set; }
     }
 }
