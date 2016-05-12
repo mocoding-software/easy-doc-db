@@ -6,12 +6,18 @@ using Mocoding.EasyDocDb.Core;
 using NSubstitute;
 using Xunit;
 using System.IO;
+using Mocoding.EasyDocDb.Tests.Helpers;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
     public class EmbeddedStorageTests
     {
         const string REF = "test_data";
+
+        public EmbeddedStorageTests()
+        {
+            TestDir.EnsureCreated(REF);
+        }
 
         [Fact]
         public void NewRefTest()
@@ -28,7 +34,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         }
 
         [Fact]
-        public async void WriteTest()
+        public async Task WriteTest()
         {
             // Arrange
             var storage = new EmbeddedStorage();
@@ -36,8 +42,6 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var expected = "document content";
 
             // Act
-            EnsureTestDirCreated();
-
             await storage.Write(fileName, expected);
             var actual = File.ReadAllText(fileName);
 
@@ -46,7 +50,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         }
 
         [Fact]
-        public async void ReadTest()
+        public async Task ReadTest()
         {
             // Arrange
             var storage = new EmbeddedStorage();
@@ -54,8 +58,6 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var expected = "document content";
 
             // Act
-            EnsureTestDirCreated();
-
             File.WriteAllText(fileName, expected);
             var actual = await storage.Read(fileName);
 
@@ -64,15 +66,13 @@ namespace Mocoding.EasyDocDb.Tests.Core
         }
 
         [Fact]
-        public async void DeleteTest()
+        public async Task DeleteTest()
         {
             // Arrange
             var storage = new EmbeddedStorage();
             var fileName = Path.Combine(REF, "delete");
 
             // Act
-            EnsureTestDirCreated();
-
             File.WriteAllText(fileName, "delete Test");
             await storage.Delete(fileName);
 
@@ -81,15 +81,13 @@ namespace Mocoding.EasyDocDb.Tests.Core
         }
 
         [Fact]
-        public async void EnumerateEmptyTest()
+        public async Task EnumerateEmptyTest()
         {
             // Arrange
             var storage = new EmbeddedStorage();
             var folder = Path.Combine(REF, "_empty");
 
             // Act
-            EnsureTestDirCreated();
-
             if (Directory.Exists(folder))
                 Directory.Delete(folder, true);
 
@@ -101,7 +99,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         }
 
         [Fact]
-        public async void EnumerateTest()
+        public async Task EnumerateTest()
         {
             // Arrange
             var storage = new EmbeddedStorage();
@@ -109,8 +107,6 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var dir = Path.Combine(REF, "_test");
 
             // Act
-            EnsureTestDirCreated();
-
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
 
@@ -125,12 +121,6 @@ namespace Mocoding.EasyDocDb.Tests.Core
             // Assert
             Assert.NotEmpty(actual);
             Assert.Equal(data[0], tomato);
-        }
-
-        private void EnsureTestDirCreated()
-        {
-            if (!Directory.Exists(REF))
-                Directory.CreateDirectory(REF);
         }
     }
 }
