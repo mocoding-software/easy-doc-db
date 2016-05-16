@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
 using NSubstitute;
 using Xunit;
+using System.Threading;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
@@ -44,7 +45,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var expectedContent = "test content";
             var expectedName = "test name";
             storage.Read(REF).Returns(Task.FromResult(expectedContent));
-            serializer.Deserialize<Person>(expectedContent).Returns(new Person() {FullName = expectedName});
+            serializer.Deserialize<Person>(expectedContent).Returns(new Person() { FullName = expectedName });
 
             var document = new Document<Person>(REF, storage, serializer);
             await document.Init();
@@ -58,7 +59,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var storage = Substitute.For<IDocumentStorage>();
             var serializer = Substitute.For<IDocumentSerializer>();
 
-            var callbackCalled =  false;
+            var callbackCalled = false;
             var document = new Document<Person>(REF, storage, serializer, d =>
             {
                 Assert.NotNull(d);
@@ -102,6 +103,20 @@ namespace Mocoding.EasyDocDb.Tests.Core
             await document.Save();
 
             Assert.False(callbackCalled);
+        }
+
+        [Fact]
+        public async Task CheckExeption()
+        {
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
+            var document = new Document<Person>(REF, storage, serializer);
+
+            var taskUpdate = Task.Run(() => document.SyncUpdate(_ => Thread.Sleep(10000)));
+
+            Exception ex = await Assert.ThrowsAsync<EasyDocDbException>(() => Task.Run(() => document.Save()));
+
+            Assert.Equal("Timeout! Can't get exclusive access to document.", ex.Message);
         }
     }
 }
