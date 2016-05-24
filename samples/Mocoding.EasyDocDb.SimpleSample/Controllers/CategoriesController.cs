@@ -11,17 +11,17 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
     [AllowAnonymous]
     public class CategoriesController : Controller
     {
-        private readonly IDocumentCollection<Category> _category;
+        private readonly IDocumentCollection<Category> _categories;
 
-        public CategoriesController(IDocumentCollection<Category> category)
+        public CategoriesController(IDocumentCollection<Category> categories)
         {
-            _category = category;    
+            _categories = categories;    
         }
 
         // GET: Categories
         public IActionResult Index()
         {
-            return View(_category.All().Select(i => i.Data).ToList());
+            return View(_categories.All().Select(i => i.Data).ToList());
         }
 
         // GET: Categories/Details/5
@@ -32,7 +32,7 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
                 return HttpNotFound();
             }
 
-            var category = _category.All().FirstOrDefault(m => m.Data.CategoryId == id)?.Data;
+            var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id)?.Data;
             if (category == null)
             {
                 return HttpNotFound();
@@ -55,7 +55,7 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
         {
             if (ModelState.IsValid)
             {
-                var newCategory = _category.New();
+                var newCategory = _categories.New();
                 newCategory.Data.CategoryId = category.CategoryId;
                 newCategory.Data.CategoryName = category.CategoryName;   
                 newCategory.Save();
@@ -67,12 +67,7 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
         // GET: Categories/Edit/5
         public IActionResult Edit(Guid id)
         {
-            if (id == Guid.Empty)
-            {
-                return HttpNotFound();
-            }
-
-            var category = _category.All().FirstOrDefault(m => m.Data.CategoryId == id)?.Data;
+            var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id)?.Data;
             if (category == null)
             {
                 return HttpNotFound();
@@ -87,7 +82,7 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currentCategory = _category.All().FirstOrDefault(m => m.Data.CategoryId == category.CategoryId);
+                var currentCategory = _categories.All().FirstOrDefault(m => m.Data.CategoryId == category.CategoryId);
                 currentCategory.Data.CategoryName = category.CategoryName;
                 currentCategory.Save();
                 return RedirectToAction("Index");
@@ -99,12 +94,7 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
         [ActionName("Delete")]
         public IActionResult Delete(Guid id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-
-            var category = _category.All().FirstOrDefault(m => m.Data.CategoryId == id);
+            var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -118,7 +108,7 @@ namespace Mocoding.EasyDocDb.SimpleSample.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(Guid id)
         {
-            var category = _category.All().FirstOrDefault(m => m.Data.CategoryId == id);                 
+            var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id);                 
             category.Delete();       
             return RedirectToAction("Index");
         }
