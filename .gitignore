@@ -3,3 +3,6 @@
 bin
 .vs
 test/Mocoding.EasyDocDb.Tests/test_data
+
+node_modules
+samples/Mocoding.EasyDocDb.CrudSample/wwwroot/lib
