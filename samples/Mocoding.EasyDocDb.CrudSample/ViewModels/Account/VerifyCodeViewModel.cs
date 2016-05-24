@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Mocoding.EasyDocDb.Sample.ViewModels.Account
+namespace Mocoding.EasyDocDb.CrudSample.ViewModels.Account
 {
     public class VerifyCodeViewModel
     {

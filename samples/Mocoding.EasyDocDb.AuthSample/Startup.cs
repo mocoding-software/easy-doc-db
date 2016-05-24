@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.Extensions.DependencyInjection;  
-using Mocoding.EasyDocDb.SimpleSample.Models;
 using Microsoft.Extensions.Configuration;
-using Mocoding.EasyDocDb;
+using Microsoft.Extensions.DependencyInjection;
+using Mocoding.EasyDocDb.AuthSample.Models;
 using Mocoding.EasyDocDb.Json;
 
-namespace SimpleSample
+namespace Mocoding.EasyDocDb.AuthSample
 {
     public class Startup
     {

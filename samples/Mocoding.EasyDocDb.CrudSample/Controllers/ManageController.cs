@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
-using Mocoding.EasyDocDb.Sample.Models;
-using Mocoding.EasyDocDb.Sample.Services;
-using Mocoding.EasyDocDb.Sample.ViewModels.Manage;
+using Mocoding.EasyDocDb.CrudSample.Models;
+using Mocoding.EasyDocDb.CrudSample.Services;
+using Mocoding.EasyDocDb.CrudSample.ViewModels.Manage;
 
-namespace Mocoding.EasyDocDb.Sample.Controllers
+namespace Mocoding.EasyDocDb.CrudSample.Controllers
 {
     [Authorize]
     public class ManageController : Controller

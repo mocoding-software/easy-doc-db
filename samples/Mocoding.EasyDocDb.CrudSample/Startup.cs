@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Mocoding.EasyDocDb.Sample.Models;
-using Mocoding.EasyDocDb.Sample.Services;
-using Mocoding.EasyDocDb.Sample.DataAccess;
+using Mocoding.EasyDocDb.CrudSample.DataAccess;
+using Mocoding.EasyDocDb.CrudSample.Models;
+using Mocoding.EasyDocDb.CrudSample.Services;
 using Mocoding.EasyDocDb.Json;
 
-namespace Mocoding.EasyDocDb.Sample
+namespace Mocoding.EasyDocDb.CrudSample
 {
     public class Startup
     {

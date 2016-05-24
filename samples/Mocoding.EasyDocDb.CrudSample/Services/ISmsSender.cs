@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Mocoding.EasyDocDb.Sample.Services
+namespace Mocoding.EasyDocDb.CrudSample.Services
 {
     public interface ISmsSender
     {

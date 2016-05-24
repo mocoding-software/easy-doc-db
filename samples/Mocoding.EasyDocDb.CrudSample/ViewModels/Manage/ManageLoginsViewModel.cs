@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNet.Http.Authentication;
 using Microsoft.AspNet.Identity;
 
-namespace Mocoding.EasyDocDb.Sample.ViewModels.Manage
+namespace Mocoding.EasyDocDb.CrudSample.ViewModels.Manage
 {
     public class ManageLoginsViewModel
     {

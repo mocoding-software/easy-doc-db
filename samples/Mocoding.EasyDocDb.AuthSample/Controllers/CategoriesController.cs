@@ -1,12 +1,10 @@
-using System.Linq;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Authorization;
-using Mocoding.EasyDocDb;
-using Mocoding.EasyDocDb.SimpleSample.Models;
 using System;
+using System.Linq;
+using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
+using Mocoding.EasyDocDb.AuthSample.Models;
 
-namespace Mocoding.EasyDocDb.SimpleSample.Controllers
+namespace Mocoding.EasyDocDb.AuthSample.Controllers
 {
     [AllowAnonymous]
     public class CategoriesController : Controller

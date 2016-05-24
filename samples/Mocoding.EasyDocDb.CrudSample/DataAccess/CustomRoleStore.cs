@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Threading;
-                           
-namespace Mocoding.EasyDocDb.Sample.DataAccess
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace Mocoding.EasyDocDb.CrudSample.DataAccess
 {
     public class CustomRoleStore : IRoleStore<IdentityRole<string>>
     {

@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
-using Mocoding.EasyDocDb.Sample.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Threading;
-using Mocoding.EasyDocDb;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Mocoding.EasyDocDb.CrudSample.Models;
 
-namespace Mocoding.EasyDocDb.Sample.DataAccess
+namespace Mocoding.EasyDocDb.CrudSample.DataAccess
 {
     public class CustomUserStore : IUserStore<ApplicationUser>, IUserPasswordStore<ApplicationUser>
     {
