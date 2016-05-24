@@ -18,6 +18,7 @@ namespace Mocoding.EasyDocDb.Core
         private Action<IDocument<T>> _onDelete;
         
         private readonly object _dataAccess = new object();
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 
         public Document(string @ref, IDocumentStorage storage, IDocumentSerializer serializer, Action<IDocument<T>> onDelete = null, Action<IDocument<T>> onSave = null)
         {
@@ -39,7 +40,7 @@ namespace Mocoding.EasyDocDb.Core
 
         public async Task SyncUpdate(Action<T> updateAction)
         {
-            if (!Monitor.TryEnter(_dataAccess, TIMEOUT))
+            if (!await _semaphore.WaitAsync(TIMEOUT))
                 throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
 
             try
@@ -49,13 +50,13 @@ namespace Mocoding.EasyDocDb.Core
             }
             finally
             {
-                Monitor.Exit(_dataAccess);
+                _semaphore.Release();
             }
         }
 
         public async Task Save()
         {
-            if (!Monitor.TryEnter(_dataAccess, TIMEOUT))
+            if(!await _semaphore.WaitAsync(TIMEOUT))
                 throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
 
             try
@@ -64,7 +65,7 @@ namespace Mocoding.EasyDocDb.Core
             }
             finally
             {
-                Monitor.Exit(_dataAccess);
+                _semaphore.Release();
             }
         }
 
@@ -78,7 +79,7 @@ namespace Mocoding.EasyDocDb.Core
 
         public async Task Delete()
         {
-            if (!Monitor.TryEnter(_dataAccess, TIMEOUT))
+            if (!await _semaphore.WaitAsync(TIMEOUT))
                 throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
 
             try
@@ -89,7 +90,7 @@ namespace Mocoding.EasyDocDb.Core
             }
             finally
             {
-                Monitor.Exit(_dataAccess);
+                _semaphore.Release();
             }
         }
     }
