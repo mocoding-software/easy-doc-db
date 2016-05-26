@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -44,8 +44,8 @@ namespace Mocoding.EasyDocDb.CrudSample
 
             IRepository repository = new Repository(new JsonSerializer());
 
-            services.AddInstance(repository.LoadCollection<ApplicationUser>("users").Result);
-            services.AddInstance(repository.LoadCollection<IdentityRole<string>>("roles").Result);
+            services.AddSingleton(repository.LoadCollection<ApplicationUser>("users").Result);
+            services.AddSingleton(repository.LoadCollection<IdentityRole<string>>("roles").Result);
 
             services.AddIdentity<ApplicationUser, IdentityRole<string>>()
                 .AddUserStore<CustomUserStore>()
@@ -70,13 +70,6 @@ namespace Mocoding.EasyDocDb.CrudSample
             {
                 app.UseBrowserLink();    
             }
-            else
-            {                                      
-
-               
-            }
-
-            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseApplicationInsightsExceptionTelemetry();
 
@@ -93,8 +86,5 @@ namespace Mocoding.EasyDocDb.CrudSample
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

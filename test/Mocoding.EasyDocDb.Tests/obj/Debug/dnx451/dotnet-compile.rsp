@@ -1,0 +1,60 @@
+--temp-output:D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\obj\Debug\dnx451\
+--out:D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\bin\Debug\dnx451\Mocoding.EasyDocDb.Tests.dll
+--define:DEBUG
+--define:TRACE
+--define:DNX451
+--suppress-warning:CS1701
+--suppress-warning:CS1702
+--suppress-warning:CS1705
+--optimize:False
+--output-name:Mocoding.EasyDocDb.Tests
+--description:Mocoding.Ofx.Tests Class Library
+--file-version:1.0.0.0
+--version:1.0.0.0
+--informational-version:1.0.0-rc1-final
+--target-framework:.NETFramework,Version=v4.5.1
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Dnx.Compilation.Abstractions\1.0.0-rc1-final\lib\net451\Microsoft.Dnx.Compilation.Abstractions.dll
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Dnx.TestHost\1.0.0-rc1-final\lib\dnx451\Microsoft.Dnx.TestHost.dll
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Dnx.Testing.Abstractions\1.0.0-rc1-final\lib\net451\Microsoft.Dnx.Testing.Abstractions.dll
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Extensions.DependencyInjection.Abstractions\1.0.0-rc1-final\lib\net451\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Extensions.Logging\1.0.0-rc1-final\lib\net451\Microsoft.Extensions.Logging.dll
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Extensions.Logging.Abstractions\1.0.0-rc1-final\lib\net451\Microsoft.Extensions.Logging.Abstractions.dll
+--reference:C:\Users\Dima\.nuget\packages\Microsoft.Extensions.PlatformAbstractions\1.0.0-rc1-final\lib\net451\Microsoft.Extensions.PlatformAbstractions.dll
+--reference:C:\Users\Dima\.nuget\packages\Newtonsoft.Json\8.0.2\lib\net45\Newtonsoft.Json.dll
+--reference:C:\Users\Dima\.nuget\packages\NSubstitute\1.10.0\lib\net45\NSubstitute.dll
+--reference:C:\Users\Dima\.nuget\packages\System.Data.Common\4.0.1-rc2-24027\ref\net45\System.Data.Common.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Linq.Queryable.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.Extensions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Threading.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.abstractions\2.0.0\lib\net35\xunit.abstractions.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.assert\2.1.0\lib\dotnet\xunit.assert.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.extensibility.core\2.1.0\lib\dotnet\xunit.core.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.extensibility.execution\2.1.0\lib\dnx451\xunit.execution.dotnet.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.runner.dnx\2.1.0-rc1-build204\lib\dnx451\xunit.runner.dnx.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.runner.reporters\2.1.0\lib\dnx451\xunit.runner.reporters.dotnet.dll
+--reference:C:\Users\Dima\.nuget\packages\xunit.runner.utility\2.1.0\lib\dnx451\xunit.runner.utility.dotnet.dll
+--reference:C:\Users\Dima\.nuget\packages\YamlDotNet\3.8.0\lib\net35\YamlDotNet.dll
+--reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb\bin\Debug\dnx451\Mocoding.EasyDocDb.dll
+--reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb.Json\bin\Debug\dnx451\Mocoding.EasyDocDb.Json.dll
+--reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb.Yaml\bin\Debug\dnx451\Mocoding.EasyDocDb.Yaml.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\mscorlib.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Core.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Microsoft.CSharp.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Threading.Tasks.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Collections.Concurrent.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Data.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Collections.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.Linq.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Xml.XDocument.dll
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Models.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Core\DocumentsCollectionTests.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Core\DocumentTests.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Core\EmbeddedStorageTests.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Helpers\TestDir.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Integration\IntegrationTests.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Json\JsonTests.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Xml\XmlTests.cs
+D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Yaml\YamlTests.cs

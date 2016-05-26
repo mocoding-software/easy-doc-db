@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Mocoding.EasyDocDb.CrudSample.Models
 {

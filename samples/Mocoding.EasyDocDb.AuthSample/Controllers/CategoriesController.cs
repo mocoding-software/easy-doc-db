@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Mocoding.EasyDocDb.AuthSample.Models;
 
 namespace Mocoding.EasyDocDb.AuthSample.Controllers
@@ -25,17 +25,7 @@ namespace Mocoding.EasyDocDb.AuthSample.Controllers
         // GET: Categories/Details/5
         public IActionResult Details(Guid id)
         {
-            if (id == Guid.Empty)
-            {
-                return HttpNotFound();
-            }
-
             var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id)?.Data;
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-
             return View(category);
         }
 
@@ -66,10 +56,6 @@ namespace Mocoding.EasyDocDb.AuthSample.Controllers
         public IActionResult Edit(Guid id)
         {
             var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id)?.Data;
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
             return View(category);
         }
 
@@ -93,11 +79,6 @@ namespace Mocoding.EasyDocDb.AuthSample.Controllers
         public IActionResult Delete(Guid id)
         {
             var category = _categories.All().FirstOrDefault(m => m.Data.CategoryId == id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-
             return View(category.Data);
         }
 

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 using Mocoding.EasyDocDb.CrudSample.Models;
 
 namespace Mocoding.EasyDocDb.CrudSample.DataAccess

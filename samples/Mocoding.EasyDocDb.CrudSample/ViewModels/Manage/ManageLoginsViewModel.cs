@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNet.Http.Authentication;
-using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 namespace Mocoding.EasyDocDb.CrudSample.ViewModels.Manage
 {
@@ -8,6 +8,6 @@ namespace Mocoding.EasyDocDb.CrudSample.ViewModels.Manage
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
 
-        public IList<AuthenticationDescription> OtherLogins { get; set; }
+        public List<AuthenticationDescription> OtherLogins { get; set; }
     }
 }

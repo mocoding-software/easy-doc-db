@@ -13,8 +13,7 @@
     "xunit": "2.1.0",
     "xunit.runner.dnx": "2.1.0-rc1-build204",
     "NSubstitute": "1.10.0",
-    "Mocoding.EasyDocDb.Xml": "1.0.0-*",
-    "Mocoding.EasyDocDb.Json": "1.0.0-rc1-final",
-    "Mocoding.EasyDocDb.Yaml": "1.0.0-rc1-final"
+    "Mocoding.EasyDocDb.Json": "1.0.0-*",
+    "Mocoding.EasyDocDb.Yaml": "1.0.0-*"
   }
 }

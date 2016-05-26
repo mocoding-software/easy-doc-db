@@ -1,10 +1,7 @@
 ﻿{
-  "version": "1.0.0-rc1-final",
+  "version": "1.0.0-rc2-final",
   "description": "Mocoding.EasyDocDb.Json Class Library",
   "authors": [ "Denys Miasoutov" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
 
   "dependencies": {
     "Newtonsoft.Json": "8.0.2",
@@ -12,15 +9,13 @@
   },
 
   "frameworks": {
-    "net451": { },
-    "dotnet5.4": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
+    "dnx451": { },
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8+dnxcore50"
+      ]
     }
   }
 }

@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Mocoding.EasyDocDb.AuthSample.Models;
 using Mocoding.EasyDocDb.Json;
+using IApplicationBuilder = Microsoft.AspNetCore.Builder.IApplicationBuilder;
 
 namespace Mocoding.EasyDocDb.AuthSample
 {
@@ -30,7 +31,7 @@ namespace Mocoding.EasyDocDb.AuthSample
         {
             IRepository repository = new Repository(new JsonSerializer());
 
-            services.AddInstance(repository.LoadCollection<Category>("data").Result);  
+            services.AddSingleton(repository.LoadCollection<Category>("data").Result);  
 
             services.AddMvc();
         }
@@ -38,7 +39,6 @@ namespace Mocoding.EasyDocDb.AuthSample
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            app.UseIISPlatformHandler();
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
             app.UseMvc(routes =>
@@ -48,8 +48,5 @@ namespace Mocoding.EasyDocDb.AuthSample
                     template: "{controller=Categories}/{action=Index}/{id?}");
             });
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }
