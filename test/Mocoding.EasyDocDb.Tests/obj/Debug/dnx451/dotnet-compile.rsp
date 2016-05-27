@@ -26,6 +26,7 @@
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Linq.Queryable.dll
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.Extensions.dll
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Threading.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Xml.XmlSerializer.dll
 --reference:C:\Users\Dima\.nuget\packages\xunit.abstractions\2.0.0\lib\net35\xunit.abstractions.dll
 --reference:C:\Users\Dima\.nuget\packages\xunit.assert\2.1.0\lib\dotnet\xunit.assert.dll
 --reference:C:\Users\Dima\.nuget\packages\xunit.extensibility.core\2.1.0\lib\dotnet\xunit.core.dll
@@ -36,6 +37,7 @@
 --reference:C:\Users\Dima\.nuget\packages\YamlDotNet\3.8.0\lib\net35\YamlDotNet.dll
 --reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb\bin\Debug\dnx451\Mocoding.EasyDocDb.dll
 --reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb.Json\bin\Debug\dnx451\Mocoding.EasyDocDb.Json.dll
+--reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb.Xml\bin\Debug\dnx451\Mocoding.EasyDocDb.Xml.dll
 --reference:D:\GitHub\easy-doc-db\src\Mocoding.EasyDocDb.Yaml\bin\Debug\dnx451\Mocoding.EasyDocDb.Yaml.dll
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\mscorlib.dll
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.dll
@@ -49,6 +51,7 @@
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.dll
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.Linq.dll
 --reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Xml.XDocument.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Xml.Serialization.dll
 D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Models.cs
 D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Core\DocumentsCollectionTests.cs
 D:\GitHub\easy-doc-db\test\Mocoding.EasyDocDb.Tests\Core\DocumentTests.cs
