@@ -1,6 +1,7 @@
 *.lock.json
 *.user
 bin
+obj
 .vs
 test/Mocoding.EasyDocDb.Tests/test_data
 
