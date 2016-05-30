@@ -1,14 +1,14 @@
 ﻿{
   "version": "1.0.0-rc2-final",
   "description": "Mocoding.EasyDocDb.Yaml Class Library",
-  "authors": [ "Denys Miasoutov" ],
+  "authors": [
+    "Denys Miasoutov"
+  ],
   "dependencies": {
     "YamlDotNet": "3.8.0",
     "Mocoding.EasyDocDb": "1.0.0-*"
   },
-
   "frameworks": {
-    "dnx451": { },
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",

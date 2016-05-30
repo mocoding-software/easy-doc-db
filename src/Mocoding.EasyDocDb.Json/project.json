@@ -9,7 +9,6 @@
   },
 
   "frameworks": {
-    "dnx451": { },
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",
