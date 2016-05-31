@@ -2,7 +2,7 @@
   "version": "1.0.0-rc1-final",
   "description": "Mocoding.Ofx.Tests Class Library",
   "authors": [ "Denys Miasoutov" ],
-  "frameworks": {    
+  "frameworks": {
     "dnx451": { }
   },
   "commands": {
