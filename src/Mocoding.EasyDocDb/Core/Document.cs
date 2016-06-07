@@ -33,7 +33,7 @@ namespace Mocoding.EasyDocDb.Core
         internal async Task Init()
         {
             var content = await _storage.Read(_ref);
-            Data = _serializer.Deserialize<T>(content);
+            Data = _serializer.Deserialize<T>(content) ?? new T();
         }
 
         public T Data { get; private set; }
