@@ -3,7 +3,6 @@ using System.Runtime.Serialization.Formatters;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
 using Mocoding.EasyDocDb.Json;
-using NSubstitute;
 using Xunit;
 using System.Threading;
 using System.IO;

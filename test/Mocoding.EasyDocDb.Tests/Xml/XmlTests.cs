@@ -2,7 +2,6 @@
 using System.Runtime.Serialization.Formatters;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
-using NSubstitute;
 using Xunit;
 using Mocoding.EasyDocDb.Xml;
 
