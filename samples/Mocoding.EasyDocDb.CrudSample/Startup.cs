@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Mocoding.EasyDocDb.CrudSample.DataAccess;
 using Mocoding.EasyDocDb.CrudSample.Models;
-using Mocoding.EasyDocDb.CrudSample.Services;
 using Mocoding.EasyDocDb.Json;
+using IApplicationBuilder = Microsoft.AspNetCore.Builder.IApplicationBuilder;
 
 namespace Mocoding.EasyDocDb.CrudSample
 {
@@ -18,17 +15,8 @@ namespace Mocoding.EasyDocDb.CrudSample
             // Set up configuration sources.
 
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", optional: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-
-                // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
-            }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -36,65 +24,29 @@ namespace Mocoding.EasyDocDb.CrudSample
 
         public IConfigurationRoot Configuration { get; set; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddApplicationInsightsTelemetry(Configuration);
-
             IRepository repository = new Repository(new JsonSerializer());
 
-            services.AddInstance(repository.LoadCollection<ApplicationUser>("users").Result);
-            services.AddInstance(repository.LoadCollection<IdentityRole<string>>("roles").Result);
-
-            services.AddIdentity<ApplicationUser, IdentityRole<string>>()
-                .AddUserStore<CustomUserStore>()
-                .AddRoleStore<CustomRoleStore>();
+            services.AddSingleton(repository.LoadCollection<Category>("data").Result);  
 
             services.AddMvc();
-
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            app.UseApplicationInsightsRequestTelemetry();
-
-            if (env.IsDevelopment())
-            {
-                app.UseBrowserLink();    
-            }
-            else
-            {                                      
-
-               
-            }
-
-            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
-
-            app.UseApplicationInsightsExceptionTelemetry();
-
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
-
-            app.UseIdentity();
-
-            // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Categories}/{action=Index}/{id?}");
             });
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

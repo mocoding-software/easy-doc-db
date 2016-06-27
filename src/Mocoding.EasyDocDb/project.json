@@ -1,15 +1,20 @@
 ﻿{
   "description": "EasyDocDb - simple embedded documentdb",
   "frameworks": {
-    "net451": { },
-    "dotnet5.4": {
-      "dependencies": {
-        "System.IO": "4.0.11-beta-23516",
-        "System.IO.FileSystem": "4.0.1-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
-      }
+    "netstandard1.5": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8+dnxcore50"
+      ]
     }
   },
-  "version": "1.0.0-rc1-final"
+  "dependencies": {
+    "System.IO.FileSystem": "4.0.1",
+    "System.Data.Common": "4.1.0",
+    "System.Linq.Queryable": "4.0.1",
+    "System.Runtime.Extensions": "4.1.0",
+    "System.Threading": "4.0.11"
+  },
+  "version": "1.0.0"
 }

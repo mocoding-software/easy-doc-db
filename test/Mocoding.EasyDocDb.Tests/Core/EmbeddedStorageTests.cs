@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
-using NSubstitute;
 using Xunit;
 using System.IO;
 using Mocoding.EasyDocDb.Tests.Helpers;
