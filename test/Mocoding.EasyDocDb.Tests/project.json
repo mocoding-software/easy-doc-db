@@ -7,7 +7,7 @@
       "dependencies": {
         "Microsoft.NETCore.App": {
           "type": "platform",
-          "version": "1.0.0-rc2-3002702"
+          "version": "1.0.0"
         }
       },
       "imports": [
@@ -27,7 +27,7 @@
     "Mocoding.EasyDocDb.Json": "1.0.0-*",
     "Mocoding.EasyDocDb.Yaml": "1.0.0-*",
     "Mocoding.EasyDocDb.Xml": "1.0.0-*",
-    "System.Diagnostics.TraceSource": "4.0.0-rc2-24027" 
+    "System.Diagnostics.TraceSource": "4.0.0" 
   },
   "testRunner": "xunit"
 }

@@ -1,10 +1,10 @@
 ﻿{
-  "version": "1.0.0-rc2-*",
+  "version": "1.0.0-*",
   "description": "Mocoding.EasyDocDb.Json Class Library",
   "authors": [ "Denys Miasoutov" ],
 
   "dependencies": {
-    "Newtonsoft.Json": "8.0.2",
+    "Newtonsoft.Json": "9.0.1",
     "Mocoding.EasyDocDb": "1.0.0-*"
   },
 
