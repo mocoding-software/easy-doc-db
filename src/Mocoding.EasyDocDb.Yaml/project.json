@@ -1,12 +1,12 @@
 ﻿{
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mocoding.EasyDocDb.Yaml Class Library",
   "authors": [
     "Denys Miasoutov"
   ],
   "dependencies": {
     "YamlDotNet": "3.8.0",
-    "Mocoding.EasyDocDb": "1.0.0-*"
+    "Mocoding.EasyDocDb": "1.0.1"
   },
   "frameworks": {
     "netstandard1.5": {

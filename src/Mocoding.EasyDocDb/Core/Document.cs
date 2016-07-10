@@ -87,6 +87,7 @@ namespace Mocoding.EasyDocDb.Core
                 await _storage.Delete(_ref);
                 _onDelete?.Invoke(this);
                 _onDelete = null; // intended for single use.
+                Data = new T(); // reset the data.
             }
             finally
             {
