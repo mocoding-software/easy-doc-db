@@ -18,7 +18,7 @@ IRepository repository = new Repository(new JsonSerializer();
 var users = await repository.LoadCollection<User>("../data/users");
 
 // read all
-var allDocs = users.All().Select(u => u.Data);
+var allDocs = users.Select(u => u.Data);
 
 //...
 // create new
@@ -63,7 +63,6 @@ Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new
 IDocumentCollection provides access to all documents and allows createing a new one.
 
 ```cs
-IEnumerable<IDocument<T>> All();
 IDocument<T> New();
 ```
 

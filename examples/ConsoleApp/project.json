@@ -9,8 +9,8 @@
       "type": "platform",
       "version": "1.0.0"
     },
-    "Mocoding.EasyDocDb": "1.0.1",
-"Mocoding.EasyDocDb.Json": "1.0.1"
+    "Mocoding.EasyDocDb": "1.1.0",
+"Mocoding.EasyDocDb.Json": "1.1.0"
   },
 
   "frameworks": {

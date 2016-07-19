@@ -21,8 +21,8 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-    "Mocoding.EasyDocDb": "1.0.1",
-    "Mocoding.EasyDocDb.Json": "1.0.1"
+    "Mocoding.EasyDocDb": "1.1.0",
+    "Mocoding.EasyDocDb.Json": "1.1.0"
   },
 
   "tools": {

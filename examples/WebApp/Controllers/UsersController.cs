@@ -13,17 +13,17 @@ namespace EasyDocDb.WebApplication.Controllers
 {
     public class UsersController : Controller
     {
-        private IDocumentCollection<User> _Users;
+        private IDocumentCollection<User> _users;
 
         public UsersController(IDocumentCollection<User> users)
         {            
-            _Users = users;
+            _users = users;
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var users = _Users.All().Select(h => h.Data);
+            var users = _users.Select(h => h.Data);
             return View(users);
         }
         public IActionResult Create()
@@ -34,7 +34,7 @@ namespace EasyDocDb.WebApplication.Controllers
         [HttpPost]
         public IActionResult Create(User user)
         {
-            var newUser = _Users.New();            
+            var newUser = _users.New();            
             newUser.Data.Name = user.Name;
             newUser.Data.LastName = user.LastName;
             newUser.Save().Wait();
@@ -43,26 +43,26 @@ namespace EasyDocDb.WebApplication.Controllers
 
         public IActionResult Delete(Guid id)
         {
-            return View(_Users.All().First(e => e.Data.ID == id).Data);
+            return View(_users.First(e => e.Data.ID == id).Data);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteComfirm(Guid id)
         {
-            var user = _Users.All().First(e => e.Data.ID == id);
+            var user = _users.First(e => e.Data.ID == id);
             user.Delete().Wait();
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(Guid id)
         {
-            return View(_Users.All().First(e => e.Data.ID == id).Data);
+            return View(_users.First(e => e.Data.ID == id).Data);
         }
 
         [HttpPost]
         public IActionResult Edit(User user)
         {
-            var curr = _Users.All().First(e => e.Data.ID == user.ID);
+            var curr = _users.First(e => e.Data.ID == user.ID);
             curr.SyncUpdate(h => { h.Name = user.Name; h.LastName = user.LastName; }).Wait();            
             return RedirectToAction("Index");
         }
