@@ -13,7 +13,6 @@ namespace Mocoding.EasyDocDb.Core
         private readonly IDocumentStorage _storage;
         private readonly IDocumentSerializer _serializer;
         private readonly string _collectionRef;
-        private readonly object _accessToList = new object();
 
         public DocumentsCollection(string collectionRef, IDocumentStorage storage, IDocumentSerializer serializer)
         {
