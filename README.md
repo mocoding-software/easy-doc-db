@@ -3,7 +3,7 @@
 ![Build Status]
 (https://mocoding.visualstudio.com/_apis/public/build/definitions/6a316467-5a7a-41a0-98fb-959a5b880ab1/21/badge)
 
-easy-doc-db - is a simple yet extendable .NET Core library that allows having embedded document storage. The lib allows working with documents in two mode - single document and collection of documents. It is best suited for small or mid size project with limited or predictably small amount of data.
+easy-doc-db - is a simple yet extendable .NET Core library that allows having embedded document storage. The lib allows working with documents in two modes - single document and collection of documents. It is best suited for small or medium-sized project with limited or predictably small amount of data.
 
 Key benefits:
  - Read optimized
@@ -60,7 +60,7 @@ Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new
 - will create new folder at the location specified by input parameter. All files will go there using the following format: {guid}.{format}.
 
 
-IDocumentCollection provides access to all documents and allows createing a new one.
+IDocumentCollection provides access to all documents and allows creating a new one.
 
 ```cs
 IDocument<T> New();
@@ -99,7 +99,7 @@ public interface IDocumentSerializer
 
 ### Storage
 
-By default documents are embedded and stored to one of your local folders. The default behavior could be overriden by custom implementation of IDocumentStorage interface.
+By default documents are embedded and stored to one of your local folders. The default behavior could be overridden by custom implementation of IDocumentStorage interface.
 Below we will show you methods for reading, writing, deleting and other operations with document.
 
 ```cs
