@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -7,7 +9,7 @@ namespace Mocoding.EasyDocDb.Core
 {
     internal class DocumentsCollection<T> : IDocumentCollection<T> where T : class, new()
     {
-        private readonly List<IDocument<T>> _list;
+        private ImmutableList<IDocument<T>> _list;
         private readonly IDocumentStorage _storage;
         private readonly IDocumentSerializer _serializer;
         private readonly string _collectionRef;
@@ -15,7 +17,7 @@ namespace Mocoding.EasyDocDb.Core
 
         public DocumentsCollection(string collectionRef, IDocumentStorage storage, IDocumentSerializer serializer)
         {
-            _list = new List<IDocument<T>>();
+            _list = ImmutableList.Create<IDocument<T>>();
             _storage = storage;
             _serializer = serializer;
             _collectionRef = collectionRef;
@@ -23,23 +25,17 @@ namespace Mocoding.EasyDocDb.Core
 
         internal async Task Init()
         {
+            var builder = _list.ToBuilder();
             var files = await _storage.Enumerate(_collectionRef);
 
             foreach (var file in files)
             {
                 var doc = new Document<T>(file, _storage, _serializer, OnElementDeleted);
                 await doc.Init();
-                _list.Add(doc);
+                builder.Add(doc);
             }
-        }
 
-        public IEnumerable<IDocument<T>> All()
-        {
-            IDocument<T>[] arr;
-            lock (_accessToList)
-                arr = _list.ToArray();
-
-            return arr;
+            _list = builder.ToImmutableList();
         }
 
         public IDocument<T> New()
@@ -52,14 +48,24 @@ namespace Mocoding.EasyDocDb.Core
 
         private void OnElementSaved(IDocument<T> arg)
         {
-            lock (_accessToList)
-                _list.Add(arg);
+            _list = _list.Add(arg);
         }
 
         private void OnElementDeleted(IDocument<T> arg)
         {
-            lock (_accessToList)
-                _list.Remove(arg);
+            _list = _list.Remove(arg);
+        }
+
+        public int Count => _list.Count;
+
+        public IEnumerator<IDocument<T>> GetEnumerator()
+        {
+            return _list.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _list.GetEnumerator();
         }
     }
 }

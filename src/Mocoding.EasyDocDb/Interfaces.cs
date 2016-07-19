@@ -12,9 +12,8 @@ namespace Mocoding.EasyDocDb
         Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new();
     }
 
-    public interface IDocumentCollection<out T> where T : class, new()
+    public interface IDocumentCollection<out T> : IReadOnlyCollection<IDocument<T>> where T : class, new()
     {
-        IEnumerable<IDocument<T>> All();
         IDocument<T> New();
     }
 

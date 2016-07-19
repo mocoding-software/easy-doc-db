@@ -37,7 +37,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var collection = new DocumentsCollection<Person>(REF, storage, serializer.Object);
 
             // Act
-            var actual = collection.All();
+            var actual = collection;
 
             // Assert
             Assert.Empty(actual);
@@ -56,10 +56,10 @@ namespace Mocoding.EasyDocDb.Tests.Core
             storage.Setup(i => i.Enumerate(REF)).Returns(Task.FromResult(people));
             await collection.Init();
 
-            var actual = collection.All();
+            var actual = collection;
 
             // Assert
-            Assert.Equal(people.Count(), actual.Count());
+            Assert.Equal(people.Count(), actual.Count);
         }
 
     }
