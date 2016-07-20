@@ -35,14 +35,10 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
         [Fact]
         public async Task SaveDocumentTest()
         {
-            // Arrange
-            var storage = new EmbeddedStorage();
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "saveTest");
-
-            // Act
-            var docCollection = new DocumentsCollection<Person>(@ref, storage, serializer);
-            await docCollection.Init();
+            IRepository repo = new Repository(serializer);
+            var docCollection = await repo.InitCollection<Person>(@ref);
 
             var expectedDoc = docCollection.New();
             expectedDoc.Data.Salary = _person.Salary;
@@ -71,15 +67,11 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
         [Fact]
         public async Task DeleteDocumentTest()
         {
-            // Arrange
-            var storage = new EmbeddedStorage();
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "deleteTest");
-
-            // Act
-            var docCollection = new DocumentsCollection<Person>(@ref, storage, serializer);
-            await docCollection.Init();
-
+            IRepository repo = new Repository(serializer);
+            var docCollection = await repo.InitCollection<Person>(@ref);
+            
             var expectedDoc = docCollection.New();
             expectedDoc.Data.Salary = _person.Salary;
             expectedDoc.Data.FullName = _person.FullName;
@@ -102,15 +94,11 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
         [Fact]
         public async Task UpdateDocumentTest()
         {
-            // Arrange
-            var storage = new EmbeddedStorage();
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "updateTest");
-            var newName = Guid.NewGuid().ToString();
-
-            // Act
-            var docCollection = new DocumentsCollection<Person>(@ref, storage, serializer);
-            await docCollection.Init();
+            IRepository repo = new Repository(serializer);
+            var docCollection = await repo.InitCollection<Person>(@ref);            
+            var newName = Guid.NewGuid().ToString();            
 
             var expectedDoc = docCollection.New();
             expectedDoc.Data.Salary = _person.Salary;
