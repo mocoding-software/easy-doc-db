@@ -50,7 +50,7 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
             await expectedDoc.Save();
 
             // exists in docCollection
-            var actualFromColl = docCollection
+            var actualFromColl = docCollection.Documents
                 .Where(_ => _.Data.FullName == expectedDoc.Data.FullName && _.Data.Salary == expectedDoc.Data.Salary)
                 .FirstOrDefault();
 
@@ -87,7 +87,7 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
 
             await expectedDoc.Delete();
 
-            var actualFromColl = docCollection
+            var actualFromColl = docCollection.Documents
                 .Where(_ => _.Data.FullName == expectedDoc.Data.FullName && _.Data.Salary == expectedDoc.Data.Salary)
                 .FirstOrDefault();
 
@@ -119,7 +119,7 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
             await expectedDoc.SyncUpdate(_ => _.FullName = newName);
 
             // exists in docCollection
-            var actualFromColl = docCollection
+            var actualFromColl = docCollection.Documents
                 .Where(_ => _.Data.FullName == expectedDoc.Data.FullName && _.Data.Salary == expectedDoc.Data.Salary)
                 .FirstOrDefault();
 

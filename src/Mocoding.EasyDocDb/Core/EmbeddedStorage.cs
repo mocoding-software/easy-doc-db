@@ -15,7 +15,7 @@ namespace Mocoding.EasyDocDb.Core
                 if (!File.Exists(@ref))
                     return string.Empty;
 
-                var content = await Task.Factory.StartNew(() => File.ReadAllText(@ref));
+                var content = await Task.Run(() => File.ReadAllText(@ref));
                 return content;
             }
             catch (Exception ex)
@@ -28,7 +28,7 @@ namespace Mocoding.EasyDocDb.Core
         {
             try
             {
-                await Task.Factory.StartNew(() => File.WriteAllText(@ref, document));
+                await Task.Run(() => File.WriteAllText(@ref, document));
             }
             catch (Exception ex)
             {
@@ -41,7 +41,7 @@ namespace Mocoding.EasyDocDb.Core
             try
             {
                 if (File.Exists(@ref))
-                    await Task.Factory.StartNew(() => File.Delete(@ref));
+                    await Task.Run(() => File.Delete(@ref));
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Mocoding.EasyDocDb.Core
             try
             {
                 if (Directory.Exists(collectionRef))
-                    return await Task.Factory.StartNew(() => Directory.EnumerateFiles(collectionRef).ToArray());
+                    return await Task.Run(() => Directory.EnumerateFiles(collectionRef).ToArray());
             }
             catch (Exception ex)
             {

@@ -57,7 +57,7 @@ namespace Mocoding.EasyDocDb.ConsoleCrudSample
         public static void Main(string[] args)
         {            
             IRepository repository = new Repository(new JsonSerializer());
-            var task = repository.Load<Human>("HumanData.Json");
+            var task = repository.Init<Human>("HumanData.Json");
             task.Wait();
             var doc = task.Result;
                        

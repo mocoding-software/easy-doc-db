@@ -26,14 +26,14 @@ namespace Mocoding.EasyDocDb
             _storage = storage;
         }
 
-        public async Task<IDocument<T>> Load<T>(string conn) where T : class, new()
+        public async Task<IDocument<T>> Init<T>(string conn) where T : class, new()
         {
             var doc = new Document<T>(conn, _storage, _serializer);
             await doc.Init();
             return doc;
         }
 
-        public async Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new()
+        public async Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new()
         {
             var collection = new DocumentsCollection<T>(conn, _storage, _serializer);
             await collection.Init();

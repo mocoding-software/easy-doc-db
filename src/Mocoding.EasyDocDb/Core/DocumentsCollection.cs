@@ -3,20 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mocoding.EasyDocDb.Core
 {
     internal class DocumentsCollection<T> : IDocumentCollection<T> where T : class, new()
     {
-        private ImmutableList<IDocument<T>> _list;
+        private readonly ImmutableArray<IDocument<T>>.Builder _builder;
         private readonly IDocumentStorage _storage;
         private readonly IDocumentSerializer _serializer;
         private readonly string _collectionRef;
+        private readonly object _syncRoot = new object();
 
         public DocumentsCollection(string collectionRef, IDocumentStorage storage, IDocumentSerializer serializer)
         {
-            _list = ImmutableList.Create<IDocument<T>>();
+            _builder = ImmutableArray.CreateBuilder<IDocument<T>>();
+            Documents = _builder.ToImmutable();
             _storage = storage;
             _serializer = serializer;
             _collectionRef = collectionRef;
@@ -24,18 +28,20 @@ namespace Mocoding.EasyDocDb.Core
 
         internal async Task Init()
         {
-            var builder = _list.ToBuilder();
             var files = await _storage.Enumerate(_collectionRef);
+            _builder.Capacity = files.Length;
 
             foreach (var file in files)
             {
                 var doc = new Document<T>(file, _storage, _serializer, OnElementDeleted);
                 await doc.Init();
-                builder.Add(doc);
+                _builder.Add(doc);
             }
 
-            _list = builder.ToImmutableList();
+            Documents = _builder.ToImmutable();
         }
+        
+        public ImmutableArray<IDocument<T>> Documents { get; private set; }
 
         public IDocument<T> New()
         {
@@ -47,24 +53,23 @@ namespace Mocoding.EasyDocDb.Core
 
         private void OnElementSaved(IDocument<T> arg)
         {
-            _list = _list.Add(arg);
+            //lock is still required to avoid possible data loss when OnElementSaved is invoked from different threads.
+            lock (_syncRoot)
+            {
+                _builder.Add(arg);
+                Documents = _builder.ToImmutable();
+            }
         }
 
         private void OnElementDeleted(IDocument<T> arg)
         {
-            _list = _list.Remove(arg);
+            //lock is still required to avoid possible data loss when OnElementDeleted is invoked from different threads.
+            lock (_syncRoot)
+            {
+                _builder.Remove(arg);
+                Documents = _builder.ToImmutable();
+            }
         }
-
-        public int Count => _list.Count;
-
-        public IEnumerator<IDocument<T>> GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
+       
     }
 }

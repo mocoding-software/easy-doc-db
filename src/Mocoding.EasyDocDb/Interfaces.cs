@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,13 +8,26 @@ namespace Mocoding.EasyDocDb
 {
     public interface IRepository
     {
-        Task<IDocument<T>> Load<T>(string conn) where T : class, new();
+        Task<IDocument<T>> Init<T>(string conn) where T : class, new();
 
-        Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new();
+        Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new();
     }
 
-    public interface IDocumentCollection<out T> : IReadOnlyCollection<IDocument<T>> where T : class, new()
+    public interface IDocumentCollection<T> where T : class, new()
     {
+        /// <summary>
+        /// Returns all documents.
+        /// </summary>
+        /// <value>
+        /// The current snapshot of the collection.
+        /// </value>
+        ImmutableArray<IDocument<T>> Documents { get; }
+
+        /// <summary>
+        /// Creates a new document but does not add it to the collection.
+        /// The document is added when the document is saved.
+        /// </summary>
+        /// <returns></returns>
         IDocument<T> New();
     }
 

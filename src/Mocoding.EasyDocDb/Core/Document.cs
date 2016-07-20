@@ -16,7 +16,7 @@ namespace Mocoding.EasyDocDb.Core
 
         private Action<IDocument<T>> _onSave;
         private Action<IDocument<T>> _onDelete;
-        
+
         private readonly object _dataAccess = new object();
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 

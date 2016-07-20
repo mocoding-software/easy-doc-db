@@ -40,9 +40,9 @@ namespace EasyDocDb.WebApplication
 
             IRepository repository = new Repository(new JsonSerializer());
 
-            var IUsers = repository.LoadCollection<User>("UsersData");
-            IUsers.Wait();
-            services.AddSingleton(IUsers.Result);            
+            var users = repository.InitCollection<User>("UsersData");
+            users.Wait();
+            services.AddSingleton(users.Result);            
             services.AddMvc();
             services.AddApplicationInsightsTelemetry(Configuration);
         }

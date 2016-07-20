@@ -23,7 +23,7 @@
     "xunit": "2.1.0",
     "dotnet-test-xunit": "1.0.0-rc2-build10025",
     "moq.netcore": "4.4.0-beta8",
-    "Mocoding.EasyDocDb": "1.0.1",
+    "Mocoding.EasyDocDb": "1.1.0",
     "Mocoding.EasyDocDb.Json": "1.1.0",
     "Mocoding.EasyDocDb.Yaml": "1.1.0",
     "Mocoding.EasyDocDb.Xml": "1.1.0",
