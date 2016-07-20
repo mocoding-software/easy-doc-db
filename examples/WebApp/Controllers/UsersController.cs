@@ -32,12 +32,12 @@ namespace EasyDocDb.WebApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(User user)
+        public async Task<IActionResult> Create(User user)
         {
             var newUser = _users.New();            
             newUser.Data.Name = user.Name;
             newUser.Data.LastName = user.LastName;
-            newUser.Save().Wait();
+            await newUser.Save();
             return RedirectToAction("Index");
         }
 
@@ -47,10 +47,10 @@ namespace EasyDocDb.WebApplication.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteComfirm(Guid id)
+        public async Task<IActionResult> DeleteComfirm(Guid id)
         {
             var user = _users.Documents.First(e => e.Data.ID == id);
-            user.Delete().Wait();
+            await user.Delete();
             return RedirectToAction("Index");
         }
 
@@ -60,10 +60,10 @@ namespace EasyDocDb.WebApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(User user)
+        public async Task<IActionResult> Edit(User user)
         {
             var curr = _users.Documents.First(e => e.Data.ID == user.ID);
-            curr.SyncUpdate(h => { h.Name = user.Name; h.LastName = user.LastName; }).Wait();            
+            await curr.SyncUpdate(h => { h.Name = user.Name; h.LastName = user.LastName; });            
             return RedirectToAction("Index");
         }
     }
