@@ -9,10 +9,10 @@ namespace Mocoding.EasyDocDb.ConsoleCrudSample
 {
     public class Program
     {        
-        private static async Task SaveAction(IDocument<Human> doc)
+        private static async Task SaveAction(IDocument<User> doc)
         {
-            Console.WriteLine("Type your name");
-            doc.Data.Name = Console.ReadLine();
+            Console.WriteLine("Type your first name");
+            doc.Data.FirstName = Console.ReadLine();
 
             Console.WriteLine("Type your last name");
             doc.Data.LastName = Console.ReadLine();
@@ -34,9 +34,9 @@ namespace Mocoding.EasyDocDb.ConsoleCrudSample
             Console.WriteLine("\nSaved");
         }
 
-        private static void LoadAction(IDocument<Human> doc)
+        private static void LoadAction(IDocument<User> doc)
         {
-            Console.WriteLine("\nName: " + doc.Data.Name);
+            Console.WriteLine("\nFirstName: " + doc.Data.FirstName);
             Console.WriteLine("Last Name: " + doc.Data.LastName);
             if (doc.Data.HasLikeIt == true)
             {
@@ -48,7 +48,7 @@ namespace Mocoding.EasyDocDb.ConsoleCrudSample
             }
         }
 
-        private static async Task DeleteAction(IDocument<Human> doc)
+        private static async Task DeleteAction(IDocument<User> doc)
         {
             await doc.Delete();
             Console.WriteLine("Deleted!\n");
@@ -57,7 +57,7 @@ namespace Mocoding.EasyDocDb.ConsoleCrudSample
         public static void Main(string[] args)
         {            
             IRepository repository = new Repository(new JsonSerializer());
-            var task = repository.Init<Human>("HumanData.Json");
+            var task = repository.Init<User>("UserData.Json");
             task.Wait();
             var doc = task.Result;
                        
