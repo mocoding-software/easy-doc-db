@@ -15,10 +15,10 @@ Demo:
 
 ```cs
 IRepository repository = new Repository(new JsonSerializer(); 
-var users = await repository.LoadCollection<User>("../data/users");
+var users = await repository.InitCollection<User>("../data/users");
 
 // read all
-var allDocs = users.Select(u => u.Data);
+var allDocs = users.Documents.Select(u => u.Data);
 
 //...
 // create new
@@ -50,12 +50,12 @@ We support next platforms:
 IRepository supports working with a single document or collection of documents.
 
 ```cs
-Task<IDocument<T>> Load<T>(string conn) where T : class, new();
+Task<IDocument<T>> Init<T>(string conn) where T : class, new();
 ```
  - will load or create a new document at the location specified by input parameter.
 
 ```cs
-Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new();
+Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new();
 ```
 - will create new folder at the location specified by input parameter. All files will go there using the following format: {guid}.{format}.
 
@@ -63,6 +63,7 @@ Task<IDocumentCollection<T>> LoadCollection<T>(string conn) where T : class, new
 IDocumentCollection provides access to all documents and allows creating a new one.
 
 ```cs
+ImmutableArray<IDocument<T>> Documents { get; }
 IDocument<T> New();
 ```
 
