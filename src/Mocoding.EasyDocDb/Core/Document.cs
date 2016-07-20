@@ -38,35 +38,18 @@ namespace Mocoding.EasyDocDb.Core
 
         public T Data { get; private set; }
 
-        public async Task SyncUpdate(Action<T> updateAction)
+        public Task SyncUpdate(Action<T> updateAction)
         {
-            if (!await _semaphore.WaitAsync(TIMEOUT))
-                throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
-
-            try
+            return Syncronize(async () =>
             {
                 updateAction(Data);
                 await SaveInternal();
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
+            });
         }
 
-        public async Task Save()
+        public Task Save()
         {
-            if(!await _semaphore.WaitAsync(TIMEOUT))
-                throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
-
-            try
-            {
-                await SaveInternal();
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
+            return Syncronize(SaveInternal);
         }
 
         private async Task SaveInternal()
@@ -77,17 +60,25 @@ namespace Mocoding.EasyDocDb.Core
             _onSave = null; // intended for single use.
         }
 
-        public async Task Delete()
+        public Task Delete()
+        {
+            return Syncronize(async () =>
+            {
+                await _storage.Delete(_ref);
+                _onDelete?.Invoke(this);
+                _onDelete = null; // intended for single use.
+                Data = new T(); // reset the data.
+            });
+        }
+
+        private async Task Syncronize(Func<Task> criticalSectionFunc)
         {
             if (!await _semaphore.WaitAsync(TIMEOUT))
                 throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
 
             try
             {
-                await _storage.Delete(_ref);
-                _onDelete?.Invoke(this);
-                _onDelete = null; // intended for single use.
-                Data = new T(); // reset the data.
+                await criticalSectionFunc();
             }
             finally
             {
