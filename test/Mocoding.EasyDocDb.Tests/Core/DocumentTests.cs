@@ -50,7 +50,8 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var document = new Document<Person>(REF, storage.Object, serializer.Object);
             await document.Init();
 
-            Assert.Equal(expectedName, document.Data.FullName);
+            var doc = document.Data;
+            Assert.Equal(expectedName, doc.FullName);
         }
 
         [Fact]

@@ -36,9 +36,10 @@ namespace Mocoding.EasyDocDb.ConsoleCrudSample
 
         private static void LoadAction(IDocument<User> doc)
         {
-            Console.WriteLine("\nFirstName: " + doc.Data.FirstName);
-            Console.WriteLine("Last Name: " + doc.Data.LastName);
-            if (doc.Data.HasLikeIt == true)
+            var docData = doc.Data;
+            Console.WriteLine("\nFirstName: " + docData.FirstName);
+            Console.WriteLine("Last Name: " + docData.LastName);
+            if (docData.HasLikeIt == true)
             {
                 Console.WriteLine("Likes it?: Yes\n");
             }
