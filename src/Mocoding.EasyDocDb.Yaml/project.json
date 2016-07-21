@@ -4,10 +4,6 @@
   "authors": [
     "Denys Miasoutov"
   ],
-  "dependencies": {
-    "YamlDotNet": "3.8.0",
-    "Mocoding.EasyDocDb": "1.1.0"
-  },
   "frameworks": {
     "netstandard1.0": {
       "imports": [
@@ -15,6 +11,11 @@
         "dnxcore50",
         "portable-net45+win8+dnxcore50"
       ]
-    }
+    },
+    "net45": {}
+  },
+  "dependencies": {
+    "YamlDotNet": "3.8.0",
+    "Mocoding.EasyDocDb": "1.1.0"
   }
 }

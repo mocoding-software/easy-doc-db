@@ -2,12 +2,6 @@
   "version": "1.1.0",
   "description": "Mocoding.EasyDocDb.Json Class Library",
   "authors": [ "Denys Miasoutov" ],
-
-  "dependencies": {
-    "Newtonsoft.Json": "9.0.1",
-    "Mocoding.EasyDocDb": "1.1.0"
-  },
-
   "frameworks": {
     "netstandard1.0": {
       "imports": [
@@ -15,6 +9,11 @@
         "dnxcore50",
         "portable-net45+win8+dnxcore50"
       ]
-    }
+    },
+    "net45": {}    
+  },
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1",
+    "Mocoding.EasyDocDb": "1.1.0"
   }
 }

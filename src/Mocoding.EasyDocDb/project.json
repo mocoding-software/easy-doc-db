@@ -6,16 +6,23 @@
         "dotnet5.6",
         "dnxcore50",
         "portable-net45+win8+dnxcore50"
-      ]
-    }
+      ],
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.1",
+        "System.Data.Common": "4.1.0",
+        "System.Linq.Queryable": "4.0.1",
+        "System.Runtime.Extensions": "4.1.0",
+        "System.Threading": "4.0.11",
+        "System.Collections.Immutable": "1.2.0"
+      }
+    },
+    "net45": {
+      "dependencies": {
+        "System.Collections.Immutable": "1.1.37"
+      }
+    }    
   },
   "dependencies": {
-    "System.IO.FileSystem": "4.0.1",
-    "System.Data.Common": "4.1.0",
-    "System.Linq.Queryable": "4.0.1",
-    "System.Runtime.Extensions": "4.1.0",
-    "System.Threading": "4.0.11",
-    "System.Collections.Immutable": "1.2.0" 
-  },
+  },  
   "version": "1.1.0"
 }
