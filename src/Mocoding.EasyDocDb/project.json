@@ -1,7 +1,7 @@
 ﻿{
   "description": "EasyDocDb - simple embedded documentdb",
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.0": {
       "imports": [
         "dotnet5.6",
         "dnxcore50",
