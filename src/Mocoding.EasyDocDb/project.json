@@ -20,7 +20,27 @@
       "dependencies": {
         "System.Collections.Immutable": "1.1.37"
       }
-    }    
+    },
+    "uap10.0": {
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.1",
+        "System.Data.Common": "4.1.0",
+        "System.Linq.Queryable": "4.0.1",
+        "System.Runtime.Extensions": "4.1.0",
+        "System.Threading": "4.0.11",
+        "System.Collections.Immutable": "1.2.0"
+      }
+    },
+    "netcore45": {
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.0",
+        "System.Data.Common": "4.1.0",
+        "System.Linq.Queryable": "4.0.0",
+        "System.Runtime.Extensions": "4.0.0",
+        "System.Threading": "4.0.0",
+        "System.Collections.Immutable": "1.2.0"
+      }
+    }
   },
   "dependencies": {
   },  
