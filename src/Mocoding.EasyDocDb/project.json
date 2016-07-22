@@ -3,7 +3,8 @@
   "packOptions": {
     "tags": [ "EasyDocDb" ],
     "owners": [ "Mocoding" ],
-    "projectUrl": "https://www.nuget.org/profiles/Mocoding"    
+    "projectUrl": "https://www.nuget.org/profiles/Mocoding",
+    "iconUrl": "https://secure.gravatar.com/avatar/4239ede11fa646a730398c24129ae7c1?s=128&r=g&d=retro"
   },  
   "frameworks": {
     "netstandard1.0": {
