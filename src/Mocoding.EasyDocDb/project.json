@@ -1,21 +1,54 @@
 ﻿{
   "description": "EasyDocDb - simple embedded documentdb",
+  "packOptions": {
+    "tags": [ "EasyDocDb" ],
+    "owners": [ "Mocoding" ],
+    "projectUrl": "https://www.nuget.org/profiles/Mocoding",
+    "iconUrl": "http://s017.radikal.ru/i424/1607/31/06ea320e4678.png"
+  },  
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.0": {
       "imports": [
         "dotnet5.6",
         "dnxcore50",
         "portable-net45+win8+dnxcore50"
-      ]
+      ],
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.1",
+        "System.Data.Common": "4.1.0",
+        "System.Linq.Queryable": "4.0.1",
+        "System.Runtime.Extensions": "4.1.0",
+        "System.Threading": "4.0.11",
+        "System.Collections.Immutable": "1.2.0"
+      }
+    },
+    "net45": {
+      "dependencies": {
+        "System.Collections.Immutable": "1.1.37"
+      }
+    },
+    "uap10.0": {
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.1",
+        "System.Data.Common": "4.1.0",
+        "System.Linq.Queryable": "4.0.1",
+        "System.Runtime.Extensions": "4.1.0",
+        "System.Threading": "4.0.11",
+        "System.Collections.Immutable": "1.2.0"
+      }
+    },
+    "netcore45": {
+      "dependencies": {
+        "System.IO.FileSystem": "4.0.0",
+        "System.Data.Common": "4.1.0",
+        "System.Linq.Queryable": "4.0.0",
+        "System.Runtime.Extensions": "4.0.0",
+        "System.Threading": "4.0.0",
+        "System.Collections.Immutable": "1.2.0"
+      }
     }
   },
   "dependencies": {
-    "System.IO.FileSystem": "4.0.1",
-    "System.Data.Common": "4.1.0",
-    "System.Linq.Queryable": "4.0.1",
-    "System.Runtime.Extensions": "4.1.0",
-    "System.Threading": "4.0.11",
-    "System.Collections.Immutable": "1.2.0" 
   },
   "version": "1.1.0"
 }
