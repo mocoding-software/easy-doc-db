@@ -12,28 +12,26 @@
         "portable-net45+win8+dnxcore50"
       ],
       "dependencies": {
-        "System.Linq.Queryable": "4.0.1",
         "System.Xml.XmlSerializer": "4.0.11"
       }
     },
     "uap10.0": {
       "dependencies": {
-        "System.Linq.Queryable": "4.0.1",
         "System.Xml.XmlSerializer": "4.0.11"
       }
-    }//,
-    //"netcore45": {
-    //  "dependencies": {
-    //    "System.Linq.Queryable": "4.0.0",
-    //    "System.Xml.XmlSerializer": "4.0.0"
-    //  }
-    //},
-    //"net45": {
-    //  "frameworkAssemblies": {
-    //    "System.Linq.Queryable": "4.0.0",
-    //    "System.Xml.Serialization.XmlSerializer": "4.0.0"
-    //  }
-    //}
+    },
+    "netcore45": {
+     "dependencies": {
+      "System.Xml.XmlSerializer": "4.0.0",
+      "System.Xml.ReaderWriter": "4.0.0" 
+     }
+    },
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Xml": "4.0.0",
+        "System.Xml.XmlSerializer": "4.0.0"
+      }
+    }
   },
   "dependencies": {
     "Mocoding.EasyDocDb": "1.1.0"    
