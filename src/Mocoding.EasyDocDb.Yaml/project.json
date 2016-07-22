@@ -12,7 +12,9 @@
         "portable-net45+win8+dnxcore50"
       ]
     },
-    "net45": {}
+    "net45": {},
+    "uap10.0": {},
+    "netcore45": {}
   },
   "dependencies": {
     "YamlDotNet": "3.8.0",

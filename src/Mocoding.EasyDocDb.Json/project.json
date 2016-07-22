@@ -10,7 +10,9 @@
         "portable-net45+win8+dnxcore50"
       ]
     },
-    "net45": {}    
+    "net45": {},
+    "uap10.0": {},
+    "netcore45": {}
   },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1",
