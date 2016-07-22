@@ -1,5 +1,10 @@
 ﻿{
   "description": "EasyDocDb - simple embedded documentdb",
+  "packOptions": {
+    "tags": [ "EasyDocDb" ],
+    "owners": [ "Mocoding" ],
+    "projectUrl": "https://www.nuget.org/profiles/Mocoding"    
+  },  
   "frameworks": {
     "netstandard1.0": {
       "imports": [
@@ -43,6 +48,6 @@
     }
   },
   "dependencies": {
-  },  
+  },
   "version": "1.1.0"
 }

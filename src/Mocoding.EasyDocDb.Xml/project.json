@@ -1,9 +1,12 @@
 ﻿{
   "version": "1.1.0",
   "description": "Mocoding.EasyDocDb.Xml Class Library",
-  "authors": [
-    "Denys Miasoutov"
-  ],
+  "packOptions": {
+    "tags": [ "EasyDocDb" ],
+    "authors": [ "Denys Miasoutov" ],
+    "owners": [ "Mocoding" ],
+    "projectUrl": "https://www.nuget.org/profiles/Mocoding"
+  },  
   "frameworks": {
     "netstandard1.0": {
       "imports": [
@@ -21,10 +24,10 @@
       }
     },
     "netcore45": {
-     "dependencies": {
-      "System.Xml.XmlSerializer": "4.0.0",
-      "System.Xml.ReaderWriter": "4.0.0" 
-     }
+      "dependencies": {
+        "System.Xml.XmlSerializer": "4.0.0",
+        "System.Xml.ReaderWriter": "4.0.0"
+      }
     },
     "net45": {
       "frameworkAssemblies": {
@@ -34,6 +37,6 @@
     }
   },
   "dependencies": {
-    "Mocoding.EasyDocDb": "1.1.0"    
+    "Mocoding.EasyDocDb": "1.1.0"
   }
 }
