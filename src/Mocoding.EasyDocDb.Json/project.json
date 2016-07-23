@@ -6,7 +6,7 @@
     "authors": [ "Denys Miasoutov" ],
     "owners": [ "Mocoding" ],
     "projectUrl": "https://www.nuget.org/profiles/Mocoding",
-    "iconUrl": "http://s017.radikal.ru/i424/1607/31/06ea320e4678.png"
+    "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png"
   },  
   "frameworks": {
     "netstandard1.0": {
