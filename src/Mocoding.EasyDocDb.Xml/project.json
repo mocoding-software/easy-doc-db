@@ -1,12 +1,19 @@
 ﻿{
   "version": "1.1.0",
-  "description": "Mocoding.EasyDocDb.Xml Class Library",
+  "description": "Xml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
-    "tags": [ "EasyDocDb" ],
-    "authors": [ "Denys Miasoutov" ],
+    "summary": "Xml serializer for embedded document database for .NET applications. Serializes documents to xml files.",
+    "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "xml", "serializer" ],
     "owners": [ "Mocoding" ],
-    "projectUrl": "https://www.nuget.org/profiles/Mocoding",
-    "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png"
+    "releaseNotes": "Initial release.",
+    "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
+    "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
+    "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",
+    "requireLicenseAcceptance": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/mocoding-software/easy-doc-db"
+    }
   },
   "frameworks": {
     "netstandard1.0": {

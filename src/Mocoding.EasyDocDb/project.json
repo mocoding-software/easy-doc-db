@@ -1,54 +1,62 @@
 ﻿{
-  "description": "EasyDocDb - simple embedded documentdb",
+  "description": "EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
-    "tags": [ "EasyDocDb" ],
+    "summary": "Embedded Document Database for .NET Core applications. Keeps documents around as local files and folders. Maintains in-memmory fast read access.",
+    "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "json", "xml", "yml" ],
     "owners": [ "Mocoding" ],
-    "projectUrl": "https://www.nuget.org/profiles/Mocoding",
-    "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png"
-  },  
-  "frameworks": {
-    "netstandard1.0": {
-      "imports": [
-        "dotnet5.6",
-        "dnxcore50",
-        "portable-net45+win8+dnxcore50"
-      ],
-      "dependencies": {
-        "System.IO.FileSystem": "4.0.1",
-        "System.Data.Common": "4.1.0",
-        "System.Linq.Queryable": "4.0.1",
-        "System.Runtime.Extensions": "4.1.0",
-        "System.Threading": "4.0.11",
-        "System.Collections.Immutable": "1.2.0"
+    "releaseNotes": "Changed documents collection to use ImmutableArray. Added support for .NET Framework 4.5, UAP, and .NET for Windows Store apps.",
+    "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
+    "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
+    "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",
+    "requireLicenseAcceptance": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/mocoding-software/easy-doc-db"
       }
     },
-    "net45": {
-      "dependencies": {
-        "System.Collections.Immutable": "1.1.37"
+    "frameworks": {
+      "netstandard1.0": {
+        "imports": [
+          "dotnet5.6",
+          "dnxcore50",
+          "portable-net45+win8+dnxcore50"
+        ],
+        "dependencies": {
+          "System.IO.FileSystem": "4.0.1",
+          "System.Data.Common": "4.1.0",
+          "System.Linq.Queryable": "4.0.1",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Collections.Immutable": "1.2.0"
+        }
+      },
+      "net45": {
+        "dependencies": {
+          "System.Collections.Immutable": "1.1.37"
+        }
+      },
+      "uap10.0": {
+        "dependencies": {
+          "System.IO.FileSystem": "4.0.1",
+          "System.Data.Common": "4.1.0",
+          "System.Linq.Queryable": "4.0.1",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Collections.Immutable": "1.2.0"
+        }
+      },
+      "netcore45": {
+        "dependencies": {
+          "System.IO.FileSystem": "4.0.0",
+          "System.Data.Common": "4.1.0",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Threading": "4.0.0",
+          "System.Collections.Immutable": "1.2.0"
+        }
       }
     },
-    "uap10.0": {
-      "dependencies": {
-        "System.IO.FileSystem": "4.0.1",
-        "System.Data.Common": "4.1.0",
-        "System.Linq.Queryable": "4.0.1",
-        "System.Runtime.Extensions": "4.1.0",
-        "System.Threading": "4.0.11",
-        "System.Collections.Immutable": "1.2.0"
-      }
+    "dependencies": {
     },
-    "netcore45": {
-      "dependencies": {
-        "System.IO.FileSystem": "4.0.0",
-        "System.Data.Common": "4.1.0",
-        "System.Linq.Queryable": "4.0.0",
-        "System.Runtime.Extensions": "4.0.0",
-        "System.Threading": "4.0.0",
-        "System.Collections.Immutable": "1.2.0"
-      }
-    }
-  },
-  "dependencies": {
-  },
-  "version": "1.1.0"
-}
+    "version": "1.1.0"
+  }
