@@ -3,12 +3,12 @@
 ![Build Status]
 (https://mocoding.visualstudio.com/_apis/public/build/definitions/6a316467-5a7a-41a0-98fb-959a5b880ab1/21/badge)
 
-easy-doc-db - is a simple yet extendable .NET Core library that allows having embedded document storage. The lib allows working with documents in two modes - single document and collection of documents. It is best suited for small or medium-sized project with limited or predictably small amount of data.
+easy-doc-db - is a simple yet extendable .NET Core library that allows having embedded document storage. The lib allows working with documents in two modes: single document and collection of documents. It is best suited for small or medium-sized projects with limited or predictably small amount of data.
 
 Key benefits:
  - Read optimized
- - No data and schema migrations
- - Extandable
+ - No data or schema migrations
+ - Extendable
  - Thread-safe
 
 Demo:
@@ -33,10 +33,10 @@ await newUser.Delete();
 
 ```
 
-"../data/users" – path for storing collection of documents. 
-Each document will be saved as a plain json file. XML and YAML are also supported.
+"../data/users" – path for storing a collection of documents. 
+Each document will be saved as a plain JSON file. XML and YAML are also supported.
 
-Please see more demo in examples folder.
+Please see more demo in the examples folder.
 
 ### Supported platforms
 
@@ -52,12 +52,12 @@ IRepository supports working with a single document or collection of documents.
 ```cs
 Task<IDocument<T>> Init<T>(string conn) where T : class, new();
 ```
- - will load or create a new document at the location specified by input parameter.
+ - will load or create a new document at the location specified by the input parameter.
 
 ```cs
 Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new();
 ```
-- will create new folder at the location specified by input parameter. All files will go there using the following format: {guid}.{format}.
+- will create a new folder at the location specified by the input parameter. All files will go there using the following format: {guid}.{format}.
 
 
 IDocumentCollection provides access to all documents and allows creating a new one.
@@ -81,12 +81,12 @@ NOTE: Data property is not thread safe.
  
 ### Serializers
 
-There are currently 3 serializers availible: Json, Yaml and Xml. They are availible via their nugets:
+There are currently 3 serializers availible: JSON, YAML and XML. They are availible via their nugets:
 - Mocoding.EasyDocDb.Json
 - Mocoding.EasyDocDb.Yaml
 - Mocoding.EasyDocDb.Xml
 
-For custom serializer you need to implement interface IDocumentSerializer and pass to Repository constructor.
+For a custom serializer you need to implement IDocumentSerializer interface and pass it to Repository constructor.
 
 
 ```cs
@@ -100,8 +100,8 @@ public interface IDocumentSerializer
 
 ### Storage
 
-By default documents are embedded and stored to one of your local folders. The default behavior could be overridden by custom implementation of IDocumentStorage interface.
-Below we will show you methods for reading, writing, deleting and other operations with document.
+By default, documents are embedded and stored to one of your local folders. The default behavior could be overridden by a custom implementation of IDocumentStorage interface.
+Below, we will show you methods for reading, writing, deleting and other operations with document.
 
 ```cs
 public interface IDocumentStorage
