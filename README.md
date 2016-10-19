@@ -3,7 +3,7 @@
 ![Build Status]
 (https://mocoding.visualstudio.com/_apis/public/build/definitions/6a316467-5a7a-41a0-98fb-959a5b880ab1/21/badge)
 
-easy-doc-db - is a simple yet extendable .NET Core library that allows having embedded document storage. The lib allows working with documents in two modes: single document and collection of documents. It is best suited for small or medium-sized projects with limited or predictably small amount of data.
+easy-doc-db - is a simple yet extendable .NET Core library that allows one to have embedded document storage. The lib allows working with documents in two modes: single document and collection of documents. It is best suited for small or medium-sized projects with limited or predictably small amount of data.
 
 Key benefits:
  - Read optimized
