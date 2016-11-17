@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1",
-    "Mocoding.EasyDocDb": "1.1.0"
+    "Mocoding.EasyDocDb": {
+      "target": "project"
+    }
   }
 }
