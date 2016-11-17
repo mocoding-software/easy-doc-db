@@ -1,0 +1,60 @@
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+  
+  <PropertyGroup>
+    <Description>Mocoding.EasyDocDb.Tests Class Library</Description>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>Mocoding.EasyDocDb.Tests</AssemblyName>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">$(PackageTargetFallback);dnxcore50;portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" />
+    <EmbeddedResource Include="**\*.resx" />
+    <EmbeddedResource Include="compiler\resources\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Json\Mocoding.EasyDocDb.Json.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Yaml\Mocoding.EasyDocDb.Yaml.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Xml\Mocoding.EasyDocDb.Xml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk">
+      <Version>1.0.0-alpha-20161104-2</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk">
+      <Version>15.0.0-preview-20161024-02</Version>
+    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio">
+      <Version>2.2.0-beta4-build1188</Version>
+    </PackageReference>
+    <PackageReference Include="xunit">
+      <Version>2.2.0-beta3-build3402</Version>
+    </PackageReference>
+    <PackageReference Include="dotnet-test-xunit">
+      <Version>1.0.0-rc2-build10025</Version>
+    </PackageReference>
+    <PackageReference Include="moq.netcore">
+      <Version>4.4.0-beta8</Version>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.TraceSource">
+      <Version>4.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">
+    <PackageReference Include="Microsoft.NETCore.App">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

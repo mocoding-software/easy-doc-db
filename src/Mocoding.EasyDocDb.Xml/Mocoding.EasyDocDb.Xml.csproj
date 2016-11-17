@@ -1,0 +1,72 @@
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+  
+  <PropertyGroup>
+    <Description>Xml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.</Description>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <TargetFrameworks>netstandard1.0;uap10.0;netcore45;net45</TargetFrameworks>
+    <AssemblyName>Mocoding.EasyDocDb.Xml</AssemblyName>
+    <PackageTags>netcore;embedded;database;document db;nosql;docdb;xml;serializer</PackageTags>
+    <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
+    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/mocoding-software/easy-doc-db</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/mocoding-software/easy-doc-db</RepositoryUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.0' ">$(PackageTargetFallback);dotnet5.6;dnxcore50;portable-net45+win8+dnxcore50</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" />
+    <EmbeddedResource Include="**\*.resx" />
+    <EmbeddedResource Include="compiler\resources\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk">
+      <Version>1.0.0-alpha-20161104-2</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NETStandard.Library">
+      <Version>1.6.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
+    <PackageReference Include="System.Xml.XmlSerializer">
+      <Version>4.0.11</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <PackageReference Include="System.Xml.XmlSerializer">
+      <Version>4.0.11</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcore45' ">
+    <PackageReference Include="System.Xml.XmlSerializer">
+      <Version>4.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Xml.ReaderWriter">
+      <Version>4.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.XmlSerializer" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
