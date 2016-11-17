@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Description>Json Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.</Description>
     <VersionPrefix>1.1.0</VersionPrefix>
-    <TargetFrameworks>netstandard1.0;net45;uap10.0;netcore45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;net45;</TargetFrameworks>
     <AssemblyName>Mocoding.EasyDocDb.Json</AssemblyName>
     <PackageTags>netcore;embedded;database;document db;nosql;docdb;json;serializer</PackageTags>
     <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
