@@ -33,10 +33,10 @@
       <Version>2.2.0-beta4-build1188</Version>
     </PackageReference>
     <PackageReference Include="xunit">
-      <Version>2.2.0-beta3-build3402</Version>
+      <Version>2.2.0-beta3-build3300</Version>
     </PackageReference>
     <PackageReference Include="dotnet-test-xunit">
-      <Version>1.0.0-rc2-build10025</Version>
+      <Version>2.2.0-preview-build1029</Version>
     </PackageReference>
     <PackageReference Include="moq.netcore">
       <Version>4.4.0-beta8</Version>
