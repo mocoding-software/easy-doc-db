@@ -28,7 +28,7 @@
     "netcore45": {}
   },
   "dependencies": {
-    "YamlDotNet": "3.8.0",
+    "YamlDotNet": "4.0.0",
     "Mocoding.EasyDocDb": "1.1.0"
   }
 }
