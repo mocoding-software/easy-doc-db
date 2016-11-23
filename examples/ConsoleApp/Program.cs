@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.ConsoleCrudSample;
+using Mocoding.EasyDocDb.Json;
 
 namespace Mocoding.EasyDocDb.ConsoleApp
 {
