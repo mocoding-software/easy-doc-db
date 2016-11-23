@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Yaml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
     "summary": "Yaml serializer for embedded document database for .NET applications. Serializes documents to yaml files.",
@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "YamlDotNet": "4.0.0",
-    "Mocoding.EasyDocDb": "1.1.0"
+    "Mocoding.EasyDocDb": {
+      "target": "project"
+    }
   }
 }
