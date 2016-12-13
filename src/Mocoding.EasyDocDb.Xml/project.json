@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Xml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
     "summary": "Xml serializer for embedded document database for .NET applications. Serializes documents to xml files.",
