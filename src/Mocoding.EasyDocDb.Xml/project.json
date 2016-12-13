@@ -5,7 +5,7 @@
     "summary": "Xml serializer for embedded document database for .NET applications. Serializes documents to xml files.",
     "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "xml", "serializer" ],
     "owners": [ "Mocoding" ],
-    "releaseNotes": "Initial release.",
+    "releaseNotes": "Dropping support for WinRT. Adding support for portable library.",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
     "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
     "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",
@@ -29,12 +29,6 @@
     "uap10.0": {
       "dependencies": {
         "System.Xml.XmlSerializer": "4.3.0"
-      }
-    },
-    "netcore45": {
-      "dependencies": {
-        "System.Xml.XmlSerializer": "4.0.0",
-        "System.Xml.ReaderWriter": "4.0.0"
       }
     },
     "net45": {
