@@ -1,12 +1,41 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Mocoding.EasyDocDb.ConsoleCrudSample;
 using Mocoding.EasyDocDb.Json;
 
 namespace Mocoding.EasyDocDb.ConsoleApp
 {
     public class Program
-    {        
+    {
+        public static void Main(string[] args)
+        {
+            IRepository repository = new Repository(new JsonSerializer());
+            var task = repository.Init<User>("UserData.Json");
+            task.Wait();
+            var doc = task.Result;
+            var s = string.Empty;
+
+            SaveAction(doc).Wait();
+            LoadAction(doc);
+
+            while (true)
+            {
+                Console.WriteLine("Type 'edit' or 'delete'");
+                s = Console.ReadLine();
+                if (s == "edit")
+                {
+                    SaveAction(doc).Wait();
+                    LoadAction(doc);
+                }
+
+                if (s == "delete")
+                {
+                    DeleteAction(doc).Wait();
+                    SaveAction(doc).Wait();
+                    LoadAction(doc);
+                }
+            }
+        }
+
         private static async Task SaveAction(IDocument<User> doc)
         {
             Console.WriteLine("Type your first name");
@@ -19,15 +48,14 @@ namespace Mocoding.EasyDocDb.ConsoleApp
             var s1 = Console.ReadLine();
             if (s1 == "yes")
             {
-                doc.Data.HasLikeIt = true;                
+                doc.Data.HasLikeIt = true;
             }
             else
             {
-                doc.Data.HasLikeIt = false;                
-            }            
+                doc.Data.HasLikeIt = false;
+            }
 
             await doc.Save();
-
 
             Console.WriteLine("\nSaved");
         }
@@ -51,39 +79,6 @@ namespace Mocoding.EasyDocDb.ConsoleApp
         {
             await doc.Delete();
             Console.WriteLine("Deleted!\n");
-        }
-
-        public static void Main(string[] args)
-        {            
-            IRepository repository = new Repository(new JsonSerializer());
-            var task = repository.Init<User>("UserData.Json");
-            task.Wait();
-            var doc = task.Result;
-                       
-            string s = "";
-
-            SaveAction(doc).Wait();
-            LoadAction(doc);
-
-            while (true)
-            {
-                Console.WriteLine("Type 'edit' or 'delete'");
-                s = Console.ReadLine();
-                if (s == "edit")
-                {
-                    SaveAction(doc).Wait();
-                    LoadAction(doc);
-                }
-
-                if (s == "delete")
-                {
-                    DeleteAction(doc).Wait();
-                    SaveAction(doc).Wait();
-                    LoadAction(doc);
-                }
-            }
-            
-            
         }
     }
 }

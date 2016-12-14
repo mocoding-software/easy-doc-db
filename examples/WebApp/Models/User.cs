@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EasyDocDb.WebApplication.Models
 {
@@ -9,9 +6,10 @@ namespace EasyDocDb.WebApplication.Models
     {
         public User()
         {
-            ID = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
-        public Guid ID { get; set; }
+
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
     }

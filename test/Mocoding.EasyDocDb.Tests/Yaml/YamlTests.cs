@@ -1,12 +1,12 @@
 ﻿using System;
-using Xunit;
 using Mocoding.EasyDocDb.Yaml;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Yaml
 {
     public class YamlTests
     {
-        private Person _person = new Person()
+        private readonly Person _person = new Person()
         {
             Address = new Address()
             {
@@ -14,7 +14,7 @@ namespace Mocoding.EasyDocDb.Tests.Yaml
                 City = "Newermind"
             },
             Salary = 100,
-            DateOfBirth = new DateTime(),
+            DateOfBirth = default(DateTime),
             FullName = "Name",
         };
 

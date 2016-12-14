@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
 using Moq;
 using Xunit;
-using System.IO;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
     public class DocumentsCollectionTests
     {
-        const string REF = "test_ref";
+        private const string REF = "test_ref";
 
         [Fact]
         public void NewTest()
@@ -61,6 +58,5 @@ namespace Mocoding.EasyDocDb.Tests.Core
             // Assert
             Assert.Equal(people.Count(), actual.Documents.Length);
         }
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
-using Xunit;
 using Mocoding.EasyDocDb.Json;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Json
 {
@@ -14,7 +14,7 @@ namespace Mocoding.EasyDocDb.Tests.Json
                 City = "Newermind"
             },
             Salary = 100,
-            DateOfBirth = new DateTime(),
+            DateOfBirth = default(DateTime),
             FullName = "Name"
         };
 

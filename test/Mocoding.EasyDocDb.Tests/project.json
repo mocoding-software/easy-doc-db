@@ -20,7 +20,7 @@
     "test": "xunit.runner.dnx"
   },
   "dependencies": {
-  	"xunit": "2.1.0",
+    "xunit": "2.1.0",
     "dotnet-test-xunit": "1.0.0-rc2-build10025",
     "moq.netcore": "4.4.0-beta8",
     "Mocoding.EasyDocDb": {
@@ -35,7 +35,11 @@
     "Mocoding.EasyDocDb.Xml": {
       "target": "project"
     },
-    "System.Diagnostics.TraceSource": "4.0.0"    
+    "System.Diagnostics.TraceSource": "4.0.0",
+    "StyleCop.Analyzers": "1.0.0"
+  },
+  "buildOptions": {
+    "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
   "testRunner": "xunit"
 }

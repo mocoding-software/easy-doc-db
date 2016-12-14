@@ -15,9 +15,9 @@ namespace Mocoding.EasyDocDb
         private readonly IDocumentSerializer _serializer;
         private readonly IDocumentStorage _storage;
 
-        public Repository(IDocumentSerializer serializer) : this (serializer, new EmbeddedStorage())
+        public Repository(IDocumentSerializer serializer)
+            : this(serializer, new EmbeddedStorage())
         {
-
         }
 
         public Repository(IDocumentSerializer serializer, IDocumentStorage storage)
@@ -26,20 +26,20 @@ namespace Mocoding.EasyDocDb
             _storage = storage;
         }
 
-        public async Task<IDocument<T>> Init<T>(string conn) where T : class, new()
+        public async Task<IDocument<T>> Init<T>(string conn)
+            where T : class, new()
         {
             var doc = new Document<T>(conn, _storage, _serializer);
             await doc.Init();
             return doc;
         }
 
-        public async Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new()
+        public async Task<IDocumentCollection<T>> InitCollection<T>(string conn)
+            where T : class, new()
         {
             var collection = new DocumentsCollection<T>(conn, _storage, _serializer);
             await collection.Init();
             return collection;
         }
-
-        
     }
 }

@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.2.1",
   "description": "Xml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
@@ -38,9 +38,13 @@
       }
     }
   },
+  "buildOptions": {
+    "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
+  },
   "dependencies": {
     "Mocoding.EasyDocDb": {
       "target": "project"
-    }
+    },
+    "StyleCop.Analyzers": "1.0.0"
   }
 }

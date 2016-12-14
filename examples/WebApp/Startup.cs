@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EasyDocDb.WebApplication.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Mocoding.EasyDocDb;
 using Mocoding.EasyDocDb.Json;
-using EasyDocDb.WebApplication.Models;
 
 namespace EasyDocDb.WebApplication
 {
@@ -28,6 +24,7 @@ namespace EasyDocDb.WebApplication
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
+
             Configuration = builder.Build();
         }
 
@@ -37,12 +34,10 @@ namespace EasyDocDb.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-
             IRepository repository = new Repository(new JsonSerializer());
-
             var users = repository.InitCollection<User>("UsersData");
             users.Wait();
-            services.AddSingleton(users.Result);            
+            services.AddSingleton(users.Result);
             services.AddMvc();
             services.AddApplicationInsightsTelemetry(Configuration);
         }

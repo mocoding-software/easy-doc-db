@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.IO;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
-using Xunit;
-using System.IO;
 using Mocoding.EasyDocDb.Tests.Helpers;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
     public class EmbeddedStorageTests
     {
-        const string REF = "test_data";
+        private const string Ref = "test_data";
 
         public EmbeddedStorageTests()
         {
-            TestDir.EnsureCreated(REF);
+            TestDir.EnsureCreated(Ref);
         }
 
         [Fact]
@@ -23,13 +20,13 @@ namespace Mocoding.EasyDocDb.Tests.Core
         {
             // Arrange
             var storage = new EmbeddedStorage();
-            var fileName = "fileName";
+            const string fileName = "fileName";
 
             // Act
-            var actual = storage.NewRef(REF, fileName);
+            var actual = storage.NewRef(Ref, fileName);
 
             // Assert
-            Assert.Equal(Path.Combine(REF, fileName), actual);
+            Assert.Equal(Path.Combine(Ref, fileName), actual);
         }
 
         [Fact]
@@ -37,7 +34,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         {
             // Arrange
             var storage = new EmbeddedStorage();
-            var fileName = Path.Combine(REF, "write");
+            var fileName = Path.Combine(Ref, "write");
             var expected = "document content";
 
             // Act
@@ -53,7 +50,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         {
             // Arrange
             var storage = new EmbeddedStorage();
-            var fileName = Path.Combine(REF, "read");
+            var fileName = Path.Combine(Ref, "read");
             var expected = "document content";
 
             // Act
@@ -69,7 +66,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         {
             // Arrange
             var storage = new EmbeddedStorage();
-            var fileName = Path.Combine(REF, "delete");
+            var fileName = Path.Combine(Ref, "delete");
 
             // Act
             File.WriteAllText(fileName, "delete Test");
@@ -84,7 +81,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
         {
             // Arrange
             var storage = new EmbeddedStorage();
-            var folder = Path.Combine(REF, "_empty");
+            var folder = Path.Combine(Ref, "_empty");
 
             // Act
             if (Directory.Exists(folder))
@@ -103,7 +100,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             // Arrange
             var storage = new EmbeddedStorage();
             var data = new string[3] { "Tomato", "Banana", "Plum" };
-            var dir = Path.Combine(REF, "_test");
+            var dir = Path.Combine(Ref, "_test");
 
             // Act
             if (!Directory.Exists(dir))

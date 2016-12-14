@@ -8,7 +8,8 @@ namespace Mocoding.EasyDocDb.Xml
     {
         public string Type => "xml";
 
-        public string Serialize<T>(T data) where T : class, new()
+        public string Serialize<T>(T data)
+            where T : class, new()
         {
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
             using (var writer = new StringWriter())
@@ -18,7 +19,8 @@ namespace Mocoding.EasyDocDb.Xml
             }
         }
 
-        public T Deserialize<T>(string content) where T : class, new()
+        public T Deserialize<T>(string content)
+            where T : class, new()
         {
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
             using (var reader = new StringReader(content))
