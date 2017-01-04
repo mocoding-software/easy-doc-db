@@ -15,11 +15,6 @@ namespace Mocoding.EasyDocDb
         private readonly IDocumentSerializer _serializer;
         private readonly IDocumentStorage _storage;
 
-        public Repository(IDocumentSerializer serializer)
-            : this(serializer, new EmbeddedStorage())
-        {
-        }
-
         public Repository(IDocumentSerializer serializer, IDocumentStorage storage)
         {
             _serializer = serializer;

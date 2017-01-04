@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
+using Mocoding.EasyDocDb.FileSystem;
 using Mocoding.EasyDocDb.Tests.Helpers;
 using Xunit;
 

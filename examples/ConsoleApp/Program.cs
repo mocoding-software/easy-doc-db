@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Mocoding.EasyDocDb.FileSystem;
 using Mocoding.EasyDocDb.Json;
 
 namespace Mocoding.EasyDocDb.ConsoleApp
@@ -8,7 +9,7 @@ namespace Mocoding.EasyDocDb.ConsoleApp
     {
         public static void Main(string[] args)
         {
-            IRepository repository = new Repository(new JsonSerializer());
+            IRepository repository = new EmbeddedRepository(new JsonSerializer());
             var task = repository.Init<User>("UserData.Json");
             task.Wait();
             var doc = task.Result;

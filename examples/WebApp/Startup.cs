@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Mocoding.EasyDocDb;
+using Mocoding.EasyDocDb.FileSystem;
 using Mocoding.EasyDocDb.Json;
 
 namespace EasyDocDb.WebApplication
@@ -34,7 +35,7 @@ namespace EasyDocDb.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            IRepository repository = new Repository(new JsonSerializer());
+            IRepository repository = new EmbeddedRepository(new JsonSerializer());
             var users = repository.InitCollection<User>("UsersData");
             users.Wait();
             services.AddSingleton(users.Result);

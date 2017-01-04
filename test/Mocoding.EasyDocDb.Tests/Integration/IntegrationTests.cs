@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Mocoding.EasyDocDb.FileSystem;
 using Mocoding.EasyDocDb.Json;
 using Mocoding.EasyDocDb.Tests.Helpers;
 using Xunit;
@@ -33,7 +34,7 @@ namespace Mocoding.EasyDocDb.Tests.Integration
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "saveTest");
-            IRepository repo = new Repository(serializer);
+            IRepository repo = new EmbeddedRepository(serializer);
             var docCollection = await repo.InitCollection<Person>(@ref);
 
             var expectedDoc = docCollection.New();
@@ -65,7 +66,7 @@ namespace Mocoding.EasyDocDb.Tests.Integration
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "deleteTest");
-            IRepository repo = new Repository(serializer);
+            IRepository repo = new EmbeddedRepository(serializer);
             var docCollection = await repo.InitCollection<Person>(@ref);
 
             var expectedDoc = docCollection.New();
@@ -92,7 +93,7 @@ namespace Mocoding.EasyDocDb.Tests.Integration
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "updateTest");
-            IRepository repo = new Repository(serializer);
+            IRepository repo = new EmbeddedRepository(serializer);
             var docCollection = await repo.InitCollection<Person>(@ref);
             var newName = Guid.NewGuid().ToString();
 

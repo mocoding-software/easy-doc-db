@@ -19,12 +19,7 @@
     "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
   "frameworks": {
-    "netstandard1.3": {
-      "imports": [
-        "dotnet5.6",        
-        "portable-net45+win8+wpa81"
-      ]
-    }
+    "netstandard1.0": { }
   },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1",

@@ -16,20 +16,13 @@
     }
   },
   "frameworks": {
-    "netstandard1.3": {
-      "imports": [
-        "dotnet5.6",        
-        "portable-net45+win8+wpa81"
-      ],    
-      "dependencies": {
-        "System.Xml.XmlSerializer": "4.3.0"
-      }
-    }
+    "netstandard1.0": { }
   },
   "buildOptions": {
     "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
   "dependencies": {
+    "System.Xml.XmlSerializer": "4.3.0",
     "Mocoding.EasyDocDb": {
       "target": "project"
     },
