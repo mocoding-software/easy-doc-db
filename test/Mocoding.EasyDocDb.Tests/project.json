@@ -10,10 +10,7 @@
           "version": "1.1.0"
         }
       },
-      "imports": [
-        "dnxcore50",
-        "portable-net45+win8"
-      ]
+      "imports": ["dotnet5.6", "portable-net451+win81"]
     }
   },
   "commands": {
