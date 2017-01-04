@@ -1,9 +1,9 @@
-﻿{
+{
   "version": "2.0.0-pre",
-  "description": "Yaml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
+  "description": "Json Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
-    "summary": "Yaml serializer for embedded document database for .NET applications. Serializes documents to yaml files.",
-    "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "yaml", "serializer" ],
+    "summary": "Json serializer for embedded document database for .NET applications. Serializes documents to json files.",
+    "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "json", "serializer" ],
     "owners": [ "Mocoding" ],
     "releaseNotes": "Dropping support for WinRT. Adding support for portable library.",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
@@ -15,19 +15,17 @@
       "url": "https://github.com/mocoding-software/easy-doc-db"
     }
   },
-  "frameworks": {
-    "netstandard1.0": {
-      "imports": "dotnet"
-    }
-  },
   "buildOptions": {
     "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
+  "frameworks": {
+    "netstandard1.3": { }
+  },
   "dependencies": {
-    "YamlDotNet": "4.0.0",
-    "StyleCop.Analyzers": "1.0.0",
+    "System.IO.FileSystem": "4.3.0",
     "Mocoding.EasyDocDb": {
       "target": "project"
-    }
+    },
+    "StyleCop.Analyzers": "1.0.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "1.3.1",
+  "version": "2.0.0-pre",
   "description": "EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
     "summary": "Embedded Document Database for .NET Core applications. Keeps documents around as local files and folders. Maintains in-memmory fast read access.",
