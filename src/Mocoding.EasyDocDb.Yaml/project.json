@@ -26,8 +26,12 @@
     "net45": {},
     "uap10.0": {}
   },
+  "buildOptions": {
+    "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
+  },
   "dependencies": {
     "YamlDotNet": "4.0.0",
+    "StyleCop.Analyzers": "1.0.0",
     "Mocoding.EasyDocDb": {
       "target": "project"
     }

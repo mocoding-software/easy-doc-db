@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Runtime.Serialization.Formatters;
-using System.Threading.Tasks;
-using Mocoding.EasyDocDb.Core;
-using Xunit;
 using Mocoding.EasyDocDb.Xml;
+using Xunit;
 
-namespace Mocoding.EasyDocDb.Tests.Core
+namespace Mocoding.EasyDocDb.Tests.Xml
 {
     public class XmlTests
     {
-        private Person _person = new Person()
+        private readonly Person _person = new Person()
         {
             Address = new Address()
             {
@@ -17,11 +14,11 @@ namespace Mocoding.EasyDocDb.Tests.Core
                 City = "Newermind"
             },
             Salary = 100,
-            DateOfBirth = new DateTime(),
+            DateOfBirth = default(DateTime),
             FullName = "Name"
         };
 
-        private XmlSerializer _serializer = new XmlSerializer();
+        private readonly XmlSerializer _serializer = new XmlSerializer();
 
         [Fact]
         public void SerializeDeserializeTest()

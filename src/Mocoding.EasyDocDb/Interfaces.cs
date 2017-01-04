@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mocoding.EasyDocDb
 {
     /// <summary>
-    /// Allows 
+    /// Allows
     /// </summary>
     public interface IRepository
     {
@@ -18,7 +18,8 @@ namespace Mocoding.EasyDocDb
         /// <typeparam name="T">Type of the document.</typeparam>
         /// <param name="conn">Path to file or other reference to where the file is stored on.</param>
         /// <returns></returns>
-        Task<IDocument<T>> Init<T>(string conn) where T : class, new();
+        Task<IDocument<T>> Init<T>(string conn)
+            where T : class, new();
 
         /// <summary>
         /// Initializes the collection of documents that is stored as a set of files.
@@ -27,14 +28,16 @@ namespace Mocoding.EasyDocDb
         /// <typeparam name="T">Type of the document.</typeparam>
         /// <param name="conn">Path to folder where documents are stored</param>
         /// <returns></returns>
-        Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new();
+        Task<IDocumentCollection<T>> InitCollection<T>(string conn)
+            where T : class, new();
     }
 
     /// <summary>
     /// Represents a collection of documents and allows certain operations to be performed.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IDocumentCollection<T> where T : class, new()
+    public interface IDocumentCollection<T>
+        where T : class, new()
     {
         /// <summary>
         /// Returns all documents.
@@ -56,7 +59,8 @@ namespace Mocoding.EasyDocDb
     /// Represents a document and allows certain operations to be performed.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IDocument<out T> where T : new()
+    public interface IDocument<out T>
+        where T : new()
     {
         /// <summary>
         /// Returns the document content.
@@ -105,7 +109,8 @@ namespace Mocoding.EasyDocDb
         /// <typeparam name="T"></typeparam>
         /// <param name="data">The data.</param>
         /// <returns></returns>
-        string Serialize<T>(T data) where T : class, new();
+        string Serialize<T>(T data)
+            where T : class, new();
 
         /// <summary>
         /// Deserializes the specified content.
@@ -113,7 +118,8 @@ namespace Mocoding.EasyDocDb
         /// <typeparam name="T"></typeparam>
         /// <param name="content">The content.</param>
         /// <returns></returns>
-        T Deserialize<T>(string content) where T : class, new();
+        T Deserialize<T>(string content)
+            where T : class, new();
     }
 
     /// <summary>

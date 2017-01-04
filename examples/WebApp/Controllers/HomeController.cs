@@ -10,9 +10,7 @@ namespace EasyDocDb.WebApplication.Controllers
     {
         public IActionResult Index()
         {
-            
             return View();
         }
-
     }
 }

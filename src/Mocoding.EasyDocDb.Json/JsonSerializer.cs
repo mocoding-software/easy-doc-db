@@ -5,7 +5,11 @@ namespace Mocoding.EasyDocDb.Json
     public class JsonSerializer : IDocumentSerializer
     {
         private readonly JsonSerializerSettings _settings;
-        public JsonSerializer() : this(new JsonSerializerSettings()) { }
+
+        public JsonSerializer()
+            : this(new JsonSerializerSettings())
+        {
+        }
 
         public JsonSerializer(JsonSerializerSettings settings)
         {
@@ -14,12 +18,14 @@ namespace Mocoding.EasyDocDb.Json
 
         public string Type => "json";
 
-        public string Serialize<T>(T data) where T : class, new()
+        public string Serialize<T>(T data)
+            where T : class, new()
         {
             return JsonConvert.SerializeObject(data, _settings);
         }
 
-        public T Deserialize<T>(string content) where T : class, new()
+        public T Deserialize<T>(string content)
+            where T : class, new()
         {
             return JsonConvert.DeserializeObject<T>(content, _settings);
         }

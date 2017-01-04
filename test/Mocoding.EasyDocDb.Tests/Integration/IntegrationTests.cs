@@ -1,36 +1,32 @@
 ﻿using System;
-using System.Runtime.Serialization.Formatters;
-using System.Threading.Tasks;
-using Mocoding.EasyDocDb.Core;
-using Mocoding.EasyDocDb.Json;
-using Xunit;
-using System.Threading;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Mocoding.EasyDocDb.Json;
 using Mocoding.EasyDocDb.Tests.Helpers;
+using Xunit;
 
-namespace Mocoding.EasyDocDb.Tests.IntegrationTests
+namespace Mocoding.EasyDocDb.Tests.Integration
 {
     public class IntegrationTests
     {
-        const string REF = "test_data";
-
+        private const string REF = "test_data";
+        private readonly Person _person;
         public IntegrationTests()
         {
             TestDir.EnsureCreated(REF);
-        }
-
-        private Person _person = new Person()
-        {
-            Address = new Address()
+            _person = new Person()
             {
-                Street = "Unknown",
-                City = "Newermind"
-            },
-            Salary = 100,
-            DateOfBirth = new DateTime(),
-            FullName = "Name1"
-        };
+                Address = new Address()
+                {
+                    Street = "Unknown",
+                    City = "Newermind"
+                },
+                Salary = 100,
+                DateOfBirth = default(DateTime),
+                FullName = "Name1"
+            };
+        }
 
         [Fact]
         public async Task SaveDocumentTest()
@@ -71,7 +67,7 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
             var @ref = Path.Combine(REF, "deleteTest");
             IRepository repo = new Repository(serializer);
             var docCollection = await repo.InitCollection<Person>(@ref);
-            
+
             var expectedDoc = docCollection.New();
             expectedDoc.Data.Salary = _person.Salary;
             expectedDoc.Data.FullName = _person.FullName;
@@ -97,8 +93,8 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "updateTest");
             IRepository repo = new Repository(serializer);
-            var docCollection = await repo.InitCollection<Person>(@ref);            
-            var newName = Guid.NewGuid().ToString();            
+            var docCollection = await repo.InitCollection<Person>(@ref);
+            var newName = Guid.NewGuid().ToString();
 
             var expectedDoc = docCollection.New();
             expectedDoc.Data.Salary = _person.Salary;
@@ -124,6 +120,5 @@ namespace Mocoding.EasyDocDb.Tests.IntegrationTests
             Assert.Equal(expectedDoc.Data.Salary, actualFromDisk.Salary);
             Assert.Equal(expectedDoc.Data.FullName, actualFromDisk.FullName);
         }
-
     }
 }

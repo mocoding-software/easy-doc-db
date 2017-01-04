@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.IO;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mocoding.EasyDocDb.Core
 {
-    internal class DocumentsCollection<T> : IDocumentCollection<T> where T : class, new()
+    internal class DocumentsCollection<T> : IDocumentCollection<T>
+        where T : class, new()
     {
         private readonly ImmutableArray<IDocument<T>>.Builder _builder;
         private readonly IDocumentStorage _storage;
@@ -17,13 +13,25 @@ namespace Mocoding.EasyDocDb.Core
         private readonly string _collectionRef;
         private readonly object _syncRoot = new object();
 
-        public DocumentsCollection(string collectionRef, IDocumentStorage storage, IDocumentSerializer serializer)
+        public DocumentsCollection(string collectionRef,
+            IDocumentStorage storage,
+            IDocumentSerializer serializer)
         {
             _builder = ImmutableArray.CreateBuilder<IDocument<T>>();
             Documents = _builder.ToImmutable();
             _storage = storage;
             _serializer = serializer;
             _collectionRef = collectionRef;
+        }
+
+        public ImmutableArray<IDocument<T>> Documents { get; private set; }
+
+        public IDocument<T> New()
+        {
+            var guid = Guid.NewGuid();
+            var docName = $"{guid}.{_serializer.Type}";
+            var docRef = _storage.NewRef(_collectionRef, docName);
+            return new Document<T>(docRef, _storage, _serializer, OnElementDeleted, OnElementSaved);
         }
 
         internal async Task Init()
@@ -40,20 +48,10 @@ namespace Mocoding.EasyDocDb.Core
 
             Documents = _builder.ToImmutable();
         }
-        
-        public ImmutableArray<IDocument<T>> Documents { get; private set; }
-
-        public IDocument<T> New()
-        {
-            var guid = Guid.NewGuid();
-            var docName = $"{guid}.{_serializer.Type}";
-            var docRef = _storage.NewRef(_collectionRef, docName);
-            return new Document<T>(docRef, _storage, _serializer, OnElementDeleted, OnElementSaved);
-        }
 
         private void OnElementSaved(IDocument<T> arg)
         {
-            //lock is still required to avoid possible data loss when OnElementSaved is invoked from different threads.
+            // lock is still required to avoid possible data loss when OnElementSaved is invoked from different threads.
             lock (_syncRoot)
             {
                 _builder.Add(arg);
@@ -63,13 +61,12 @@ namespace Mocoding.EasyDocDb.Core
 
         private void OnElementDeleted(IDocument<T> arg)
         {
-            //lock is still required to avoid possible data loss when OnElementDeleted is invoked from different threads.
+            // lock is still required to avoid possible data loss when OnElementDeleted is invoked from different threads.
             lock (_syncRoot)
             {
                 _builder.Remove(arg);
                 Documents = _builder.ToImmutable();
             }
         }
-       
     }
 }

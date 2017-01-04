@@ -61,7 +61,6 @@ namespace Mocoding.EasyDocDb.Core
                 throw new StorageException($"Failed to enumerate files in directory {collectionRef}", ex);
             }
 
-
             try
             {
                 Directory.CreateDirectory(collectionRef);

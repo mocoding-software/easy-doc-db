@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{EDE281B3-1CA3-4A6A-B567-773464BF83B3}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		_stylecop\StyleCop.ruleset = _stylecop\StyleCop.ruleset
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Mocoding.EasyDocDb", "src\Mocoding.EasyDocDb\Mocoding.EasyDocDb.xproj", "{EB482D45-99F0-4C8C-A683-8A5D5EB79187}"

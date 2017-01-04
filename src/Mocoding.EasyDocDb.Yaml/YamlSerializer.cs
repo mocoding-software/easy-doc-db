@@ -10,7 +10,8 @@ namespace Mocoding.EasyDocDb.Yaml
     {
         public string Type => "yml";
 
-        public string Serialize<T>(T data) where T : class, new()
+        public string Serialize<T>(T data)
+            where T : class, new()
         {
             using (var stringWriter = new StringWriter())
             {
@@ -20,7 +21,8 @@ namespace Mocoding.EasyDocDb.Yaml
             }
         }
 
-        public T Deserialize<T>(string content) where T : class, new()
+        public T Deserialize<T>(string content)
+            where T : class, new()
         {
             using (var stringReader = new StringReader(content))
             {

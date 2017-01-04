@@ -1,7 +1,8 @@
 {
   "version": "1.0.0-*",
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
 
   "dependencies": {
@@ -14,7 +15,8 @@
     },
     "Mocoding.EasyDocDb.Json": {
       "target": "project"
-    }
+    },
+    "StyleCop.Analyzers": "1.0.0"
   },
 
   "frameworks": {

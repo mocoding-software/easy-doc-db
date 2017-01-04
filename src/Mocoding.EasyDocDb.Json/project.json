@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.2.1",
   "description": "Json Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
@@ -15,6 +15,9 @@
       "url": "https://github.com/mocoding-software/easy-doc-db"
     }
   },
+  "buildOptions": {
+    "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
+  },
   "frameworks": {
     "netstandard1.0": {
       "imports": [
@@ -30,6 +33,7 @@
     "Newtonsoft.Json": "9.0.1",
     "Mocoding.EasyDocDb": {
       "target": "project"
-    }
+    },
+    "StyleCop.Analyzers": "1.0.0"
   }
 }

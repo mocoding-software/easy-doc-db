@@ -26,9 +26,10 @@
     },
     "Mocoding.EasyDocDb.Json": {
       "target": "project"
-    }
-  },
+    },
 
+    "StyleCop.Analyzers": "1.0.0"
+  },
   "tools": {
     "BundlerMinifier.Core": "2.0.238",
     "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
@@ -46,7 +47,8 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
 
   "runtimeOptions": {
