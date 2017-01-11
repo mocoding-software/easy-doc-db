@@ -1,11 +1,22 @@
 ﻿{
-  "version": "2.0.0-pre",
+  "version": "2.0.0",
   "description": "Yaml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
     "summary": "Yaml serializer for embedded document database for .NET applications. Serializes documents to yaml files.",
-    "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "yaml", "serializer" ],
-    "owners": [ "Mocoding" ],
-    "releaseNotes": "Dropping support for WinRT. Adding support for portable library.",
+    "tags": [
+      "net core",
+      "netstandard",
+      "embedded",
+      "database",
+      "document db",
+      "storage",
+      "nosql",
+      "docdb",
+      "yml",
+      "yaml"
+    ],
+    "owners": [ "MOCODING, LLC" ],
+    "releaseNotes": "Added support for .NetStandard 1.0",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
     "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
     "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",

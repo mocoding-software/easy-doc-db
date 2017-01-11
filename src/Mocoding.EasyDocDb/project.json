@@ -1,13 +1,15 @@
 {
-  "version": "2.0.0-pre",
-  "description": "EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
+  "version": "2.0.0",
+  "description": "EasyDocDb - embedded nosql document storage database for .NET written on C#",
   "packOptions": {
-    "summary": "Embedded Document Database for .NET Core applications. Keeps documents around as local files and folders. Maintains in-memmory fast read access.",
+    "summary": "Small framework for nosql documents storage. Supports embedded storage for limited number of documents in-memmory while storing those as files serialized specified format (json, xml, yaml or custom)",
     "tags": [
-      "netcore",
+      "net core",
+      "netstandard",
       "embedded",
       "database",
       "document db",
+      "storage",
       "nosql",
       "docdb",
       "json",
@@ -15,9 +17,9 @@
       "yml"
     ],
     "owners": [
-      "Mocoding"
+      "MOCODING, LLC"
     ],
-    "releaseNotes": "Dropping support for WinRT. Adding support for portable library.",
+    "releaseNotes": "Extracted EmbeddedStorage in seperate FileSystem assembly. Added support for .NET Standard 1.0",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
     "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
     "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",
