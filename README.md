@@ -3,7 +3,7 @@
 ![Build Status](https://mocoding.visualstudio.com/_apis/public/build/definitions/da7703d4-fb22-4933-b869-83f4264b7b84/29/badge)
 [![NuGet version](https://badge.fury.io/nu/Mocoding.EasyDocDb.svg)](https://www.nuget.org/packages/Mocoding.EasyDocDb)
 
-easy-doc-db - is a simple yet extendable .NET Standaed library that allows one to have embedded document storage. The lib allows working with documents in two modes: single document and collection of documents. It is best suited for small or medium-sized projects with limited or predictably small amount of data. All data are kept in memmory while changes are constantly persisted to specified storage as json, xml or yaml formatted documents.
+easy-doc-db - embedded nosql document storage database for .NET. It is best suited for small or medium-sized projects with limited or predictably small amount of data. All data are kept in memmory while changes are constantly persisted to specified storage as json, xml or yaml formatted documents.
 
 Key benefits:
  - Read optimized
@@ -116,3 +116,12 @@ public interface IDocumentStorage
 }
 ```
 
+## Contributions
+
+All source code is located in ```src``` folder. Tests are in ```test``` folder. You will need Visual Studio 2015 Update 3.
+You may use examples to play with and/or improve existing code base.
+
+## Contact Us
+
+Our website: [http://mocoding.com](http://mocoding.com)
+Email: [social@mocoding.com](mailto:social@mocoding.com)
