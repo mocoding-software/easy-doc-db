@@ -1,9 +1,9 @@
 # Easy-Doc-Db
 
-![Build Status]
-(https://mocoding.visualstudio.com/_apis/public/build/definitions/6a316467-5a7a-41a0-98fb-959a5b880ab1/21/badge)
+![Build Status](https://mocoding.visualstudio.com/_apis/public/build/definitions/da7703d4-fb22-4933-b869-83f4264b7b84/29/badge)
+[![NuGet version](https://badge.fury.io/nu/Mocoding.EasyDocDb.svg)](https://www.nuget.org/packages/Mocoding.EasyDocDb)
 
-easy-doc-db - is a simple yet extendable .NET Core library that allows one to have embedded document storage. The lib allows working with documents in two modes: single document and collection of documents. It is best suited for small or medium-sized projects with limited or predictably small amount of data.
+easy-doc-db - embedded nosql document storage database for .NET. It is best suited for small or medium-sized projects with limited or predictably small amount of data. All data are kept in memmory while changes are constantly persisted to specified storage as json, xml or yaml formatted documents.
 
 Key benefits:
  - Read optimized
@@ -14,7 +14,7 @@ Key benefits:
 Demo:
 
 ```cs
-IRepository repository = new Repository(new JsonSerializer(); 
+IRepository repository = new Repository(new JsonSerializer(),new EmbeddedStorage()); 
 var users = await repository.InitCollection<User>("../data/users");
 
 // read all
@@ -30,7 +30,6 @@ await newUser.Save();
 //...
 //delete
 await newUser.Delete();
-
 ```
 
 "../data/users" – path for storing a collection of documents. 
@@ -42,10 +41,12 @@ Please see more demo in the examples folder.
 
 We support next platforms:
 
-- .NET 4.5.1
-- .NET Core 1.0
+- .NET Standard 1.0 for Core Library and JSON/XML/YAML Serialializers
+- .NET Standard 1.3 for FileSystem Repsitory
 
-## Documentation
+Supporting .NET Standard 1.0 is essential since it is supported by widest range of target platforms including Xamarin, .NET Core and native .NET Framework.
+
+## Usage Details
 
 IRepository supports working with a single document or collection of documents.
 
@@ -57,8 +58,8 @@ Task<IDocument<T>> Init<T>(string conn) where T : class, new();
 ```cs
 Task<IDocumentCollection<T>> InitCollection<T>(string conn) where T : class, new();
 ```
-- will create a new folder at the location specified by the input parameter. All files will go there using the following format: {guid}.{format}.
-
+- will create a new folder at the location specified by the input parameter.
+All files will go there using the following format: {guid}.{format}.
 
 IDocumentCollection provides access to all documents and allows creating a new one.
 
@@ -100,8 +101,9 @@ public interface IDocumentSerializer
 
 ### Storage
 
-By default, documents are embedded and stored to one of your local folders. The default behavior could be overridden by a custom implementation of IDocumentStorage interface.
-Below, we will show you methods for reading, writing, deleting and other operations with document.
+Mocoding.EasyDocDb.FileSystem provides default implementation that stores documents to one of your local folders.
+The default behavior could be overridden by a custom implementation of IDocumentStorage interface.
+Below, we will show ysou methods for reading, writing, deleting and other operations with document.
 
 ```cs
 public interface IDocumentStorage
@@ -114,3 +116,13 @@ public interface IDocumentStorage
 }
 ```
 
+## Contributions
+
+All source code is located in ```src``` folder. Tests are in ```test``` folder. You will need Visual Studio 2015 Update 3.
+You may use examples to play with and/or improve existing code base.
+
+## Contact Us
+
+Our website: [http://mocoding.com](http://mocoding.com)
+
+Email: [social@mocoding.com](mailto:social@mocoding.com)

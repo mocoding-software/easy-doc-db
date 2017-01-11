@@ -24,6 +24,9 @@
     "Mocoding.EasyDocDb": {
       "target": "project"
     },
+    "Mocoding.EasyDocDb.FileSystem": {
+      "target": "project"
+    },
     "Mocoding.EasyDocDb.Json": {
       "target": "project"
     },

@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace Mocoding.EasyDocDb.Core
+[assembly: InternalsVisibleTo("Mocoding.EasyDocDb.Tests")]
+namespace Mocoding.EasyDocDb.FileSystem
 {
     internal class EmbeddedStorage : IDocumentStorage
     {

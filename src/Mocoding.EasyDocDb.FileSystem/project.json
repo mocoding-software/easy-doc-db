@@ -1,22 +1,11 @@
-﻿{
+{
   "version": "2.0.0",
-  "description": "Yaml Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
+  "description": "Embedded storage for EasyDocDb - stores documents as files on a local drive.",
   "packOptions": {
-    "summary": "Yaml serializer for embedded document database for .NET applications. Serializes documents to yaml files.",
-    "tags": [
-      "net core",
-      "netstandard",
-      "embedded",
-      "database",
-      "document db",
-      "storage",
-      "nosql",
-      "docdb",
-      "yml",
-      "yaml"
-    ],
+    "summary": "Implementation of IRepository for EasyDocDb that stores document files locally.",
+    "tags": [ "netcore", "embedded", "database", "document db", "nosql", "docdb", "json", "serializer" ],
     "owners": [ "MOCODING, LLC" ],
-    "releaseNotes": "Added support for .NetStandard 1.0",
+    "releaseNotes": "Extracted from Core library. Added support for .NetStandard 1.3",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
     "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
     "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",
@@ -26,19 +15,17 @@
       "url": "https://github.com/mocoding-software/easy-doc-db"
     }
   },
-  "frameworks": {
-    "netstandard1.0": {
-      "imports": "dotnet"
-    }
-  },
   "buildOptions": {
     "additionalArguments": [ "/ruleset:../../_stylecop/StyleCop.ruleset" ]
   },
+  "frameworks": {
+    "netstandard1.3": { }
+  },
   "dependencies": {
-    "YamlDotNet": "4.0.0",
-    "StyleCop.Analyzers": "1.0.0",
+    "System.IO.FileSystem": "4.3.0",
     "Mocoding.EasyDocDb": {
       "target": "project"
-    }
+    },
+    "StyleCop.Analyzers": "1.0.0"
   }
 }
