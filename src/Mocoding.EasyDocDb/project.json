@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "description": "EasyDocDb - embedded nosql document storage database for .NET written on C#",
   "packOptions": {
-    "summary": "Small framework for nosql documents storage. Supports embedded storage for limited number of documents in-memmory while storing those as files serialized specified format (json, xml, yaml or custom)",
+    "summary": "Small framework for nosql documents storage. Supports embedded storage for limited number of documents in-memory while storing those as files serialized specified format (json, xml, yaml or custom)",
     "tags": [
       "net core",
       "netstandard",
