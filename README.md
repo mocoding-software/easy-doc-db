@@ -65,7 +65,7 @@ IDocumentCollection provides access to all documents and allows creating a new o
 
 ```cs
 ImmutableArray<IDocument<T>> Documents { get; }
-IDocument<T> New();
+IDocument<T> New(T initialData = null);
 ```
 
 IDocument allows saving, deleting and updating the document in a thread safe manner.
@@ -73,6 +73,7 @@ IDocument allows saving, deleting and updating the document in a thread safe man
  ```cs
 T Data { get; }
 Task SyncUpdate(Action<T> data);
+Task SyncUpdate(T data);
 Task Save();
 Task Delete();
 ```
