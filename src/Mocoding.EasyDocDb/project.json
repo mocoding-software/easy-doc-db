@@ -1,8 +1,8 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "EasyDocDb - embedded nosql document storage database for .NET written on C#",
   "packOptions": {
-    "summary": "Small framework for nosql documents storage. Supports embedded storage for limited number of documents in-memmory while storing those as files serialized specified format (json, xml, yaml or custom)",
+    "summary": "Small framework for nosql documents storage. Supports embedded storage for limited number of documents in-memory while storing those as files serialized specified format (json, xml, yaml or custom)",
     "tags": [
       "net core",
       "netstandard",
@@ -19,7 +19,7 @@
     "owners": [
       "MOCODING, LLC"
     ],
-    "releaseNotes": "Extracted EmbeddedStorage in seperate FileSystem assembly. Added support for .NET Standard 1.0",
+    "releaseNotes": "Added initial data when creating new Document and ability to replace document data.",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
     "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
     "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",

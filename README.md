@@ -3,7 +3,7 @@
 ![Build Status](https://mocoding.visualstudio.com/_apis/public/build/definitions/da7703d4-fb22-4933-b869-83f4264b7b84/29/badge)
 [![NuGet version](https://badge.fury.io/nu/Mocoding.EasyDocDb.svg)](https://www.nuget.org/packages/Mocoding.EasyDocDb)
 
-easy-doc-db - embedded nosql document storage database for .NET. It is best suited for small or medium-sized projects with limited or predictably small amount of data. All data are kept in memmory while changes are constantly persisted to specified storage as json, xml or yaml formatted documents.
+easy-doc-db - embedded nosql document storage database for .NET. It is best suited for small or medium-sized projects with limited or predictably small amount of data. All data are kept in memory while changes are persisted to specified storage as json, xml or yaml formatted documents.
 
 Key benefits:
  - Read optimized
@@ -65,7 +65,7 @@ IDocumentCollection provides access to all documents and allows creating a new o
 
 ```cs
 ImmutableArray<IDocument<T>> Documents { get; }
-IDocument<T> New();
+IDocument<T> New(T initialData = null);
 ```
 
 IDocument allows saving, deleting and updating the document in a thread safe manner.
@@ -73,6 +73,7 @@ IDocument allows saving, deleting and updating the document in a thread safe man
  ```cs
 T Data { get; }
 Task SyncUpdate(Action<T> data);
+Task SyncUpdate(T data);
 Task Save();
 Task Delete();
 ```

@@ -16,18 +16,14 @@ namespace Mocoding.EasyDocDb.Core
         private Action<IDocument<T>> _onSave;
         private Action<IDocument<T>> _onDelete;
 
-        public Document(string @ref,
-            IDocumentStorage storage,
-            IDocumentSerializer serializer,
-            Action<IDocument<T>> onDelete = null,
-            Action<IDocument<T>> onSave = null)
+        public Document(string @ref, IDocumentStorage storage, IDocumentSerializer serializer, Action<IDocument<T>> onDelete = null, Action<IDocument<T>> onSave = null, T initialData = null)
         {
             _storage = storage;
             _ref = @ref;
             _serializer = serializer;
             _onDelete = onDelete;
             _onSave = onSave;
-            Data = new T();
+            Data = initialData ?? new T();
         }
 
         public T Data { get; private set; }
@@ -37,6 +33,15 @@ namespace Mocoding.EasyDocDb.Core
             return Syncronize(async () =>
             {
                 updateAction(Data);
+                await SaveInternal();
+            });
+        }
+
+        public Task SyncUpdate(T newData)
+        {
+            return Syncronize(async () =>
+            {
+                Data = newData;
                 await SaveInternal();
             });
         }

@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Json Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.",
   "packOptions": {
     "summary": "Json serializer for embedded document database for .NET applications. Serializes documents to json files.",
@@ -15,7 +15,7 @@
       "json"
     ],
     "owners": [ "MOCODING, LLC" ],
-    "releaseNotes": "Added support for .NetStandard 1.0",
+    "releaseNotes": "Use Populate instead of Deserialize method",
     "projectUrl": "https://github.com/mocoding-software/easy-doc-db",
     "iconUrl": "https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png",
     "licenseUrl": "https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE",

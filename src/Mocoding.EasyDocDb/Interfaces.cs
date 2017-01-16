@@ -51,15 +51,16 @@ namespace Mocoding.EasyDocDb
         /// Creates a new document but does not add it to the collection.
         /// The document is added when the document is saved.
         /// </summary>
+        /// <param name="initialData">Initial data.</param>
         /// <returns></returns>
-        IDocument<T> New();
+        IDocument<T> New(T initialData = null);
     }
 
     /// <summary>
     /// Represents a document and allows certain operations to be performed.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IDocument<out T>
+    public interface IDocument<T>
         where T : new()
     {
         /// <summary>
@@ -76,6 +77,13 @@ namespace Mocoding.EasyDocDb
         /// <param name="data">The data.</param>
         /// <returns></returns>
         Task SyncUpdate(Action<T> data);
+
+        /// <summary>
+        /// Allows to update the document by replacing all the document content with a new value. Thread-save.
+        /// </summary>
+        /// <param name="newData">Document data to replace with.</param>
+        /// <returns></returns>
+        Task SyncUpdate(T newData);
 
         /// <summary>
         /// Allows saving the document data in a thread-safe manner.
