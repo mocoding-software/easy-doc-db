@@ -126,7 +126,7 @@ namespace Mocoding.EasyDocDb.Tests.Integration
         public async Task UpdateDocumentTest2()
         {
             var serializer = new JsonSerializer();
-            var @ref = Path.Combine(REF, "updateTest");
+            var @ref = Path.Combine(REF, "updateTest2");
             IRepository repo = new EmbeddedRepository(serializer);
             var docCollection = await repo.InitCollection<Person>(@ref);
             var newName = Guid.NewGuid().ToString();
