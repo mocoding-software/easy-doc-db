@@ -27,7 +27,9 @@ namespace Mocoding.EasyDocDb.Json
         public T Deserialize<T>(string content)
             where T : class, new()
         {
-            return JsonConvert.DeserializeObject<T>(content, _settings);
+            var t = new T();
+            JsonConvert.PopulateObject(content, t);
+            return t;
         }
     }
 }

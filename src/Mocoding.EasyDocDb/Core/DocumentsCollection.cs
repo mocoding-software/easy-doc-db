@@ -26,12 +26,12 @@ namespace Mocoding.EasyDocDb.Core
 
         public ImmutableArray<IDocument<T>> Documents { get; private set; }
 
-        public IDocument<T> New()
+        public IDocument<T> New(T initialData = null)
         {
             var guid = Guid.NewGuid();
             var docName = $"{guid}.{_serializer.Type}";
             var docRef = _storage.NewRef(_collectionRef, docName);
-            return new Document<T>(docRef, _storage, _serializer, OnElementDeleted, OnElementSaved);
+            return new Document<T>(docRef, _storage, _serializer, OnElementDeleted, OnElementSaved, initialData);
         }
 
         internal async Task Init()

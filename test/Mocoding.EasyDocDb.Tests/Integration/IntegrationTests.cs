@@ -121,5 +121,28 @@ namespace Mocoding.EasyDocDb.Tests.Integration
             Assert.Equal(expectedDoc.Data.Salary, actualFromDisk.Salary);
             Assert.Equal(expectedDoc.Data.FullName, actualFromDisk.FullName);
         }
+
+        [Fact]
+        public async Task UpdateDocumentTest2()
+        {
+            var serializer = new JsonSerializer();
+            var @ref = Path.Combine(REF, "updateTest");
+            IRepository repo = new EmbeddedRepository(serializer);
+            var docCollection = await repo.InitCollection<Person>(@ref);
+            var newName = Guid.NewGuid().ToString();
+
+            var doc = docCollection.New(_person);
+            await doc.Save();
+
+            Assert.Equal(doc.Data.Salary, _person.Salary);
+            Assert.Equal(doc.Data.FullName, _person.FullName);
+
+            var newPerson = new Person { FullName = newName };
+            await doc.SyncUpdate(newPerson);
+
+            // Assert
+            Assert.Equal(doc.Data.Salary, 0);
+            Assert.Equal(doc.Data.FullName, newName);
+        }
     }
 }
