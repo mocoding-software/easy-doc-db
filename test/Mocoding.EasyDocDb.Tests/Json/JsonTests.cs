@@ -32,5 +32,12 @@ namespace Mocoding.EasyDocDb.Tests.Json
             Assert.Equal(_person.Address.Street, obj.Address.Street);
             Assert.Equal(_person.Address.City, obj.Address.City);
         }
+
+        [Fact]
+        public void DeserializeEmptyTest()
+        {
+            var obj = _serializer.Deserialize<Person>("");
+            Assert.Equal(null, obj);
+        }
     }
 }

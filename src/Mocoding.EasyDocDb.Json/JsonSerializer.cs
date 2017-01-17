@@ -28,6 +28,8 @@ namespace Mocoding.EasyDocDb.Json
             where T : class, new()
         {
             var t = new T();
+            if (string.IsNullOrEmpty(content))
+                return null;
             JsonConvert.PopulateObject(content, t);
             return t;
         }
