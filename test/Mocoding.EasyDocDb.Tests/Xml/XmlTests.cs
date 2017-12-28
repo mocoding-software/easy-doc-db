@@ -1,6 +1,6 @@
 ﻿using System;
 using Mocoding.EasyDocDb.Xml;
-using Xunit;
+using NUnit.Framework;
 
 namespace Mocoding.EasyDocDb.Tests.Xml
 {
@@ -20,17 +20,17 @@ namespace Mocoding.EasyDocDb.Tests.Xml
 
         private readonly XmlSerializer _serializer = new XmlSerializer();
 
-        [Fact]
+        [Test(Description = "Serialize Deserialize Test")]
         public void SerializeDeserializeTest()
         {
             var xml = _serializer.Serialize(_person);
             var obj = _serializer.Deserialize<Person>(xml);
 
-            Assert.Equal(_person.Salary, obj.Salary);
-            Assert.Equal(_person.DateOfBirth, obj.DateOfBirth);
-            Assert.Equal(_person.FullName, obj.FullName);
-            Assert.Equal(_person.Address.Street, obj.Address.Street);
-            Assert.Equal(_person.Address.City, obj.Address.City);
+            Assert.AreEqual(_person.Salary, obj.Salary);
+            Assert.AreEqual(_person.DateOfBirth, obj.DateOfBirth);
+            Assert.AreEqual(_person.FullName, obj.FullName);
+            Assert.AreEqual(_person.Address.Street, obj.Address.Street);
+            Assert.AreEqual(_person.Address.City, obj.Address.City);
         }
     }
 }

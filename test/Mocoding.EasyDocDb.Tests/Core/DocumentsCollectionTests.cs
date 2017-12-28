@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
-using Moq;
-using Xunit;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
@@ -10,13 +10,13 @@ namespace Mocoding.EasyDocDb.Tests.Core
     {
         private const string REF = "test_ref";
 
-        [Fact]
+        [Test(Description = "new test")]
         public void NewTest()
         {
             // Arrange
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
-            var collection = new DocumentsCollection<Person>(REF, storage.Object, serializer.Object);
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
+            var collection = new DocumentsCollection<Person>(REF, storage, serializer);
 
             // Act
             var actual = collection.New();
@@ -25,38 +25,38 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.NotNull(actual);
         }
 
-        [Fact]
+        [Test(Description = "All Empty Test")]
         public void AllEmptyTest()
         {
             // Arrange
-            var storage = Mock.Of<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
-            var collection = new DocumentsCollection<Person>(REF, storage, serializer.Object);
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
+            var collection = new DocumentsCollection<Person>(REF, storage, serializer);
 
             // Act
             var actual = collection.Documents;
 
             // Assert
-            Assert.Empty(actual);
+            Assert.IsEmpty(actual);
         }
 
-        [Fact]
-        public async void AllTest()
+        [Test(Description = "AllTest")]
+        public async Task AllTest()
         {
             // Arrange
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
-            var collection = new DocumentsCollection<Person>(REF, storage.Object, serializer.Object);
-            var people = new string[3] { "Kirill", "Dima", "Kate" };
+            var storage = Substitute.For<IDocumentStorage>();
+            var people = new[] { "Kirill", "Dima", "Kate" };
+            storage.Enumerate(REF).Returns(Task.FromResult(people));
+            var serializer = Substitute.For<IDocumentSerializer>();
+            var collection = new DocumentsCollection<Person>(REF, storage, serializer);
 
             // Act
-            storage.Setup(i => i.Enumerate(REF)).Returns(Task.FromResult(people));
             await collection.Init();
 
             var actual = collection;
 
             // Assert
-            Assert.Equal(people.Count(), actual.Documents.Length);
+            Assert.AreEqual(people.Count(), actual.Documents.Length);
         }
     }
 }

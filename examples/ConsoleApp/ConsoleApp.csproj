@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>ConsoleApp</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>ConsoleApp</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
+    <CodeAnalysisRuleSet>..\..\_stylecop\StyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.FileSystem\Mocoding.EasyDocDb.FileSystem.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Json\Mocoding.EasyDocDb.Json.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>
