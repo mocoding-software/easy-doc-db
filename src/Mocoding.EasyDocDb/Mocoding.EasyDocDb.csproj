@@ -1,11 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>EasyDocDb - embedded nosql document storage database for .NET written on C#</Description>
-    <VersionPrefix>2.1.0</VersionPrefix>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Mocoding.EasyDocDb</AssemblyName>
-    <PackageId>Mocoding.EasyDocDb</PackageId>
+    <Description>EasyDocDb - embedded nosql document persistance for .NET Core.</Description>
+    <TargetFramework>netstandard1.0</TargetFramework>
     <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json;xml;yml</PackageTags>
     <PackageReleaseNotes>Added initial data when creating new Document and ability to replace document data.</PackageReleaseNotes>
     <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png</PackageIconUrl>
@@ -18,7 +15,10 @@
 
   <ItemGroup>
     <PackageReference Include="System.Collections.Immutable" Version="1.4.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <Version>1.1.0-beta006</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

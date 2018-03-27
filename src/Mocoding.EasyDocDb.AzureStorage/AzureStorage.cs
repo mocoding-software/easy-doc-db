@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Mocoding.AspNetCore.ODataApi.EasyDocDb.AzureStorage;
 
 namespace Mocoding.EasyDocDb.AzureStorage
 {

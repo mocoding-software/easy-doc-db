@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Json Serializer for EasyDocDb - simple and easy to use embedded document database for .NET Core applications.</Description>
-    <VersionPrefix>2.0.2</VersionPrefix>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Json Serializer for EasyDocDb - stores documents as JSON files.</Description>
+    <TargetFramework>netstandard1.0</TargetFramework>
     <AssemblyName>Mocoding.EasyDocDb.Json</AssemblyName>
     <PackageId>Mocoding.EasyDocDb.Json</PackageId>
     <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json</PackageTags>
@@ -22,8 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <Version>1.1.0-beta006</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

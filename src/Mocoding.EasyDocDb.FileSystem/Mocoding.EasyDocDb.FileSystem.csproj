@@ -2,10 +2,7 @@
 
   <PropertyGroup>
     <Description>Embedded storage for EasyDocDb - stores documents as files on a local drive.</Description>
-    <VersionPrefix>2.0.0</VersionPrefix>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Mocoding.EasyDocDb.FileSystem</AssemblyName>
-    <PackageId>Mocoding.EasyDocDb.FileSystem</PackageId>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <PackageTags>netcore;embedded;database;document db;nosql;docdb;json;serializer</PackageTags>
     <PackageReleaseNotes>Extracted from Core library. Added support for .NetStandard 1.3</PackageReleaseNotes>
     <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png</PackageIconUrl>
@@ -22,7 +19,10 @@
 
   <ItemGroup>
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <Version>1.1.0-beta006</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
