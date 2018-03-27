@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
 using Mocoding.EasyDocDb.FileSystem;
 using Mocoding.EasyDocDb.Tests.Helpers;
-using Xunit;
+using NUnit.Framework;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
@@ -16,7 +16,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             TestDir.EnsureCreated(Ref);
         }
 
-        [Fact]
+        [Test(Description = "New Ref Test")]
         public void NewRefTest()
         {
             // Arrange
@@ -27,10 +27,10 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var actual = storage.NewRef(Ref, fileName);
 
             // Assert
-            Assert.Equal(Path.Combine(Ref, fileName), actual);
+            Assert.AreEqual(Path.Combine(Ref, fileName), actual);
         }
 
-        [Fact]
+        [Test(Description = "Write Test")]
         public async Task WriteTest()
         {
             // Arrange
@@ -43,10 +43,10 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var actual = File.ReadAllText(fileName);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.AreEqual(expected, actual);
         }
 
-        [Fact]
+        [Test(Description = "Read Test")]
         public async Task ReadTest()
         {
             // Arrange
@@ -59,10 +59,10 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var actual = await storage.Read(fileName);
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.AreEqual(expected, actual);
         }
 
-        [Fact]
+        [Test(Description = "Delete Test")]
         public async Task DeleteTest()
         {
             // Arrange
@@ -77,7 +77,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.False(File.Exists(fileName));
         }
 
-        [Fact]
+        [Test(Description = "Enumerate Empty Test")]
         public async Task EnumerateEmptyTest()
         {
             // Arrange
@@ -92,20 +92,22 @@ namespace Mocoding.EasyDocDb.Tests.Core
 
             // Assert
             Assert.True(Directory.Exists(folder));
-            Assert.Empty(actual);
+            Assert.IsEmpty(actual);
         }
 
-        [Fact]
+        [Test(Description = "Enumerate Test")]
         public async Task EnumerateTest()
         {
             // Arrange
             var storage = new EmbeddedStorage();
-            var data = new string[3] { "Tomato", "Banana", "Plum" };
+            var data = new[] { "Tomato", "Banana", "Plum" };
             var dir = Path.Combine(Ref, "_test");
 
             // Act
             if (!Directory.Exists(dir))
+            {
                 Directory.CreateDirectory(dir);
+            }
 
             foreach (var item in data)
             {
@@ -116,8 +118,8 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var tomato = File.ReadAllText(Path.Combine(dir, data[0]));
 
             // Assert
-            Assert.NotEmpty(actual);
-            Assert.Equal(data[0], tomato);
+            Assert.IsNotEmpty(actual);
+            Assert.AreEqual(data[0], tomato);
         }
     }
 }

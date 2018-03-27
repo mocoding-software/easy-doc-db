@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Mocoding.EasyDocDb.Tests Class Library</Description>
+    <Authors>Denys Miasoutov</Authors>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Mocoding.EasyDocDb.Tests</AssemblyName>
+    <PackageId>Mocoding.EasyDocDb.Tests</PackageId>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <CodeAnalysisRuleSet>..\..\_stylecop\StyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.FileSystem\Mocoding.EasyDocDb.FileSystem.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Json\Mocoding.EasyDocDb.Json.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Yaml\Mocoding.EasyDocDb.Yaml.csproj" />
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Xml\Mocoding.EasyDocDb.Xml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.1" />
+    <PackageReference Include="NSubstitute" Version="3.1.0" />
+    <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>

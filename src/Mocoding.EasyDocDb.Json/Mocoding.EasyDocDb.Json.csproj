@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Json Serializer for EasyDocDb - stores documents as JSON files.</Description>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <AssemblyName>Mocoding.EasyDocDb.Json</AssemblyName>
+    <PackageId>Mocoding.EasyDocDb.Json</PackageId>
+    <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json</PackageTags>
+    <PackageReleaseNotes>Use Populate instead of Deserialize method. Fixed issues with initialization.</PackageReleaseNotes>
+    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/mocoding-software/easy-doc-db</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/mocoding-software/easy-doc-db</RepositoryUrl>
+
+    <CodeAnalysisRuleSet>..\..\_stylecop\StyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <Version>1.1.0-beta006</Version>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

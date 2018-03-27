@@ -2,8 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
-using Moq;
-using Xunit;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
@@ -11,7 +11,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
     {
         private const string Ref = "test_ref";
 
-        [Fact]
+        [Test(Description = "New Document Test")]
         public void NewDocumentTest()
         {
             var document = new Document<Person>(Ref, null, null);
@@ -19,48 +19,48 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.NotNull(document.Data);
         }
 
-        [Fact]
+        [Test(Description = "Save Document Test")]
         public async Task SaveDocumentTest()
         {
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
 
-            var document = new Document<Person>(Ref, storage.Object, serializer.Object);
+            var document = new Document<Person>(Ref, storage, serializer);
             var expectedContent = "test content";
-            serializer.Setup(i => i.Serialize(document.Data)).Returns(expectedContent);
+            serializer.Serialize(document.Data).Returns(expectedContent);
 
             await document.Save();
 
-            serializer.Object.Serialize(document.Data);
-            await storage.Object.Write(Ref, expectedContent);
+            serializer.Serialize(document.Data);
+            await storage.Write(Ref, expectedContent);
         }
 
-        [Fact]
+        [Test(Description = "Load Document Test")]
         public async Task LoadDocumentTest()
         {
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
 
             var expectedContent = "test content";
             var expectedName = "test name";
-            storage.Setup(i => i.Read(Ref)).Returns(Task.FromResult(expectedContent));
-            serializer.Setup(i => i.Deserialize<Person>(expectedContent)).Returns(new Person() { FullName = expectedName });
+            storage.Read(Ref).Returns(Task.FromResult(expectedContent));
+            serializer.Deserialize<Person>(expectedContent).Returns(new Person() { FullName = expectedName });
 
-            var document = new Document<Person>(Ref, storage.Object, serializer.Object);
+            var document = new Document<Person>(Ref, storage, serializer);
             await document.Init();
 
             var doc = document.Data;
-            Assert.Equal(expectedName, doc.FullName);
+            Assert.AreEqual(expectedName, doc.FullName);
         }
 
-        [Fact]
+        [Test(Description = "Delete Callback Test")]
         public async Task DeleteCallbackTest()
         {
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
 
             var callbackCalled = false;
-            var document = new Document<Person>(Ref, storage.Object, serializer.Object, d =>
+            var document = new Document<Person>(Ref, storage, serializer, d =>
             {
                 Assert.NotNull(d);
                 callbackCalled = true;
@@ -69,7 +69,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             await document.Delete();
 
             Assert.True(callbackCalled);
-            await storage.Object.Delete(Ref);
+            await storage.Delete(Ref);
 
             callbackCalled = false;
 
@@ -78,14 +78,14 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.False(callbackCalled);
         }
 
-        [Fact]
+        [Test(Description = "Save Callback Test")]
         public async Task SaveCallbackTest()
         {
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
 
             var callbackCalled = false;
-            var document = new Document<Person>(Ref, storage.Object, serializer.Object, null, d =>
+            var document = new Document<Person>(Ref, storage, serializer, null, d =>
             {
                 Assert.NotNull(d);
                 callbackCalled = true;
@@ -101,18 +101,18 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.False(callbackCalled);
         }
 
-        [Fact]
-        public async Task CheckExeption()
+        [Test(Description = "Check Exeption")]
+        public void CheckExeption()
         {
-            var storage = new Mock<IDocumentStorage>();
-            var serializer = new Mock<IDocumentSerializer>();
-            var document = new Document<Person>(Ref, storage.Object, serializer.Object);
+            var storage = Substitute.For<IDocumentStorage>();
+            var serializer = Substitute.For<IDocumentSerializer>();
+            var document = new Document<Person>(Ref, storage, serializer);
 
-            var taskUpdate = Task.Run(() => document.SyncUpdate(_ => Thread.Sleep(10000)));
+            Task.Run(() => document.SyncUpdate(_ => Thread.Sleep(10000)));
 
-            Exception ex = await Assert.ThrowsAsync<EasyDocDbException>(() => Task.Run(() => document.Save()));
+            Exception ex = Assert.ThrowsAsync<EasyDocDbException>(() => Task.Run(() => document.Save()));
 
-            Assert.Equal("Timeout! Can't get exclusive access to document.", ex.Message);
+            Assert.AreEqual("Timeout! Can't get exclusive access to document.", ex.Message);
         }
     }
 }
