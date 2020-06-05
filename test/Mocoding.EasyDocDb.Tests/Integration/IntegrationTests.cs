@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Mocoding.EasyDocDb.FileSystem;
 using Mocoding.EasyDocDb.Json;
 using Mocoding.EasyDocDb.Tests.Helpers;
-using NUnit.Framework;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Integration
 {
@@ -29,12 +29,12 @@ namespace Mocoding.EasyDocDb.Tests.Integration
             };
         }
 
-        [Test(Description = "Save Document Test")]
+        [Fact(DisplayName = "Save Document Test")]
         public async Task SaveDocumentTest()
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "saveTest");
-            IRepository repo = new EmbeddedRepository(serializer);
+            IRepository repo = new Repository(serializer, new EmbeddedStorage());
             var docCollection = await repo.InitCollection<Person>(@ref);
 
             var expectedDoc = docCollection.New();
@@ -54,19 +54,19 @@ namespace Mocoding.EasyDocDb.Tests.Integration
             var actualFromDisk = serializer.Deserialize<Person>(actualPerson);
 
             // Assert
-            Assert.AreEqual(expectedDoc.Data.Salary, actualFromColl.Data.Salary);
-            Assert.AreEqual(expectedDoc.Data.FullName, actualFromColl.Data.FullName);
+            Assert.Equal(expectedDoc.Data.Salary, actualFromColl.Data.Salary);
+            Assert.Equal(expectedDoc.Data.FullName, actualFromColl.Data.FullName);
 
-            Assert.AreEqual(expectedDoc.Data.Salary, actualFromDisk.Salary);
-            Assert.AreEqual(expectedDoc.Data.FullName, actualFromDisk.FullName);
+            Assert.Equal(expectedDoc.Data.Salary, actualFromDisk.Salary);
+            Assert.Equal(expectedDoc.Data.FullName, actualFromDisk.FullName);
         }
 
-        [Test(Description = "Delete Document Test")]
+        [Fact(DisplayName = "Delete Document Test")]
         public async Task DeleteDocumentTest()
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "deleteTest");
-            IRepository repo = new EmbeddedRepository(serializer);
+            IRepository repo = new Repository(serializer, new EmbeddedStorage());
             var docCollection = await repo.InitCollection<Person>(@ref);
 
             var expectedDoc = docCollection.New();
@@ -87,12 +87,12 @@ namespace Mocoding.EasyDocDb.Tests.Integration
             Assert.Null(actualFile);
         }
 
-        [Test(Description = "Update Document Test")]
+        [Fact(DisplayName = "Update Document Test")]
         public async Task UpdateDocumentTest()
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "updateTest");
-            IRepository repo = new EmbeddedRepository(serializer);
+            IRepository repo = new Repository(serializer, new EmbeddedStorage());
             var docCollection = await repo.InitCollection<Person>(@ref);
             var newName = Guid.NewGuid().ToString();
 
@@ -114,34 +114,34 @@ namespace Mocoding.EasyDocDb.Tests.Integration
             var actualFromDisk = serializer.Deserialize<Person>(actualPerson);
 
             // Assert
-            Assert.AreEqual(expectedDoc.Data.Salary, actualFromColl.Data.Salary);
-            Assert.AreEqual(expectedDoc.Data.FullName, actualFromColl.Data.FullName);
+            Assert.Equal(expectedDoc.Data.Salary, actualFromColl.Data.Salary);
+            Assert.Equal(expectedDoc.Data.FullName, actualFromColl.Data.FullName);
 
-            Assert.AreEqual(expectedDoc.Data.Salary, actualFromDisk.Salary);
-            Assert.AreEqual(expectedDoc.Data.FullName, actualFromDisk.FullName);
+            Assert.Equal(expectedDoc.Data.Salary, actualFromDisk.Salary);
+            Assert.Equal(expectedDoc.Data.FullName, actualFromDisk.FullName);
         }
 
-        [Test(Description = "Update Document Test2")]
+        [Fact(DisplayName = "Update Document Test2")]
         public async Task UpdateDocumentTest2()
         {
             var serializer = new JsonSerializer();
             var @ref = Path.Combine(REF, "updateTest2");
-            IRepository repo = new EmbeddedRepository(serializer);
+            IRepository repo = new Repository(serializer, new EmbeddedStorage());
             var docCollection = await repo.InitCollection<Person>(@ref);
             var newName = Guid.NewGuid().ToString();
 
             var doc = docCollection.New(_person);
             await doc.Save();
 
-            Assert.AreEqual(doc.Data.Salary, _person.Salary);
-            Assert.AreEqual(doc.Data.FullName, _person.FullName);
+            Assert.Equal(doc.Data.Salary, _person.Salary);
+            Assert.Equal(doc.Data.FullName, _person.FullName);
 
             var newPerson = new Person { FullName = newName };
             await doc.SyncUpdate(newPerson);
 
             // Assert
-            Assert.AreEqual(doc.Data.Salary, 0);
-            Assert.AreEqual(doc.Data.FullName, newName);
+            Assert.Equal(doc.Data.Salary, 0);
+            Assert.Equal(doc.Data.FullName, newName);
         }
     }
 }

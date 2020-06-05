@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
 using NSubstitute;
-using NUnit.Framework;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
@@ -10,7 +10,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
     {
         private const string REF = "test_ref";
 
-        [Test(Description = "new test")]
+        [Fact(DisplayName = "new test")]
         public void NewTest()
         {
             // Arrange
@@ -25,7 +25,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.NotNull(actual);
         }
 
-        [Test(Description = "All Empty Test")]
+        [Fact(DisplayName = "All Empty Test")]
         public void AllEmptyTest()
         {
             // Arrange
@@ -37,10 +37,10 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var actual = collection.Documents;
 
             // Assert
-            Assert.IsEmpty(actual);
+            Assert.Empty(actual);
         }
 
-        [Test(Description = "AllTest")]
+        [Fact(DisplayName = "AllTest")]
         public async Task AllTest()
         {
             // Arrange
@@ -56,7 +56,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             var actual = collection;
 
             // Assert
-            Assert.AreEqual(people.Count(), actual.Documents.Length);
+            Assert.Equal(people.Count(), actual.Documents.Length);
         }
     }
 }

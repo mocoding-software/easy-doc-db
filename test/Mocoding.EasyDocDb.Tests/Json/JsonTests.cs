@@ -1,6 +1,6 @@
 ﻿using System;
 using Mocoding.EasyDocDb.Json;
-using NUnit.Framework;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Json
 {
@@ -20,24 +20,24 @@ namespace Mocoding.EasyDocDb.Tests.Json
 
         private JsonSerializer _serializer = new JsonSerializer();
 
-        [Test(Description = "Serialize Deserialize Test")]
+        [Fact(DisplayName = "Serialize Deserialize Test")]
         public void SerializeDeserializeTest()
         {
             var json = _serializer.Serialize(_person);
             var obj = _serializer.Deserialize<Person>(json);
 
-            Assert.AreEqual(_person.Salary, obj.Salary);
-            Assert.AreEqual(_person.DateOfBirth, obj.DateOfBirth);
-            Assert.AreEqual(_person.FullName, obj.FullName);
-            Assert.AreEqual(_person.Address.Street, obj.Address.Street);
-            Assert.AreEqual(_person.Address.City, obj.Address.City);
+            Assert.Equal(_person.Salary, obj.Salary);
+            Assert.Equal(_person.DateOfBirth, obj.DateOfBirth);
+            Assert.Equal(_person.FullName, obj.FullName);
+            Assert.Equal(_person.Address.Street, obj.Address.Street);
+            Assert.Equal(_person.Address.City, obj.Address.City);
         }
 
-        [Test(Description = "Deserialize Empty Test")]
+        [Fact(DisplayName = "Deserialize Empty Test")]
         public void DeserializeEmptyTest()
         {
             var obj = _serializer.Deserialize<Person>(string.Empty);
-            Assert.AreEqual(null, obj);
+            Assert.Equal(null, obj);
         }
     }
 }

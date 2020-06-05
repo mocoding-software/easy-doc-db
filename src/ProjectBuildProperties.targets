@@ -1,0 +1,25 @@
+<Project>
+    <PropertyGroup>      
+      <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png</PackageIconUrl>
+      <PackageProjectUrl>https://github.com/mocoding-software/easy-doc-db</PackageProjectUrl>
+      <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE</PackageLicenseUrl>
+      <RepositoryType>git</RepositoryType>
+      <RepositoryUrl>https://github.com/mocoding-software/easy-doc-db</RepositoryUrl>
+      <CodeAnalysisRuleSet>..\..\StyleCop.ruleset</CodeAnalysisRuleSet>
+      <Authors>MOCODING LLC,Dennis Miasoutov</Authors>
+      <DebugType>Full</DebugType>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>    
+      <None Include="../../icon.png" Pack="true" PackagePath="" />
+      <None Include="../../LICENSE" Pack="true" PackagePath="" />    
+  </ItemGroup>
+
+  <ItemGroup>  
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

@@ -1,28 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="../ProjectBuildProperties.targets" />
+  
   <PropertyGroup>
     <Description>Yaml Serializer for EasyDocDb - stores documents as Yaml files.</Description>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;yml;yaml</PackageTags>
-    <PackageReleaseNotes>Added support for .NetStandard 1.0</PackageReleaseNotes>
-    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/easy-doc-db/nugetIcon.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/mocoding-software/easy-doc-db</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/mocoding-software/easy-doc-db</RepositoryUrl>
-    <CodeAnalysisRuleSet>..\..\_stylecop\StyleCop.ruleset</CodeAnalysisRuleSet>
+    <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;yml;yaml</PackageTags>    
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="YamlDotNet" Version="4.3.1" />
-    <PackageReference Include="StyleCop.Analyzers">
-      <PrivateAssets>all</PrivateAssets>
-      <Version>1.1.0-beta006</Version>
-    </PackageReference>
+    <ProjectReference Include="..\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />  
+    <PackageReference Include="YamlDotNet" Version="8.1.2" />    
   </ItemGroup>
 
 </Project>
