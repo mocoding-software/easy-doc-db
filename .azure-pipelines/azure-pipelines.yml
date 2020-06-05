@@ -102,31 +102,31 @@ stages:
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDb)
+              project: $(easyDocDb)
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDbAzureStorage)
+              project: $(easyDocDbAzureStorage)
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDbFileSystem)
+              project: $(easyDocDbFileSystem)
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDbJson)
+              project: $(easyDocDbJson)
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDbXml)
+              project: $(easyDocDbXml)
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDbYaml)
+              project: $(easyDocDbYaml)
 
           - template: pack-template.yml
             parameters:
-              package: $(easyDocDbCsv)
+              project: $(easyDocDbCsv)
 
           - task: PublishBuildArtifacts@1
             displayName: "Publish Artifact: nupkg"
