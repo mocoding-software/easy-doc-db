@@ -7,7 +7,7 @@ version: '2.4'
 services:
   # Update this to the name of the service you want to work with in your docker-compose.yml file
   devbox:
-    image: mcr.microsoft.com/dotnet/core/sdk:3.1.101
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1.300
     # You may want to add a non-root user to your Dockerfile and uncomment the line below
     # to cause all processes to run as this user. Once present, you can also simply
     # use the "remoteUser" property in devcontainer.json if you just want VS Code and

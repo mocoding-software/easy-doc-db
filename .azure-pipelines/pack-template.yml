@@ -1,0 +1,13 @@
+parameters:
+  - name: project
+    type: string
+    default: ""
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: "dotnet pack $(project)"
+    inputs:
+      command: pack
+      packagesToPack: "src/$(project)/$(project).csproj"
+      configuration: $(buildConfiguration)
+      packDirectory: "$(Build.StagingDirectory)/$(project)"
+      buildProperties: "Version=$(Build.BuildNumber)"

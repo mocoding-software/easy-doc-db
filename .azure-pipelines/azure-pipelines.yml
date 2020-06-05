@@ -18,8 +18,15 @@ pool:
 
 variables:
   buildConfiguration: "Release"
-  projectName: "Mocoding.AspNetCore.Spa"
-  solutionFile: "aspnetcore-spa.sln"  
+  projectName: "Mocoding.EasyDocDb"
+  solutionFile: "easy-doc-db.sln"  
+  easyDocDb: $(projectName)
+  easyDocDbAzureStorage: $(projectName).AzureStorage
+  easyDocDbFileSystem: $(projectName).FileSystem
+  easyDocDbJson: $(projectName).Json
+  easyDocDbXml: $(projectName).Xml
+  easyDocDbYaml: $(projectName).Yaml  
+  
 
 stages:
   - stage: Build
@@ -46,7 +53,7 @@ stages:
             displayName: 'Install .NET Core sdk'
             inputs:
               packageType: sdk
-              version: 3.1.100
+              version: 3.1.300
               installationPath: $(Agent.ToolsDirectory)/dotnet
 
           - task: DotNetCoreCLI@2
@@ -61,7 +68,7 @@ stages:
               SonarCloud: 'sonarcloud'
               organization: 'mocoding'
               scannerMode: 'MSBuild'
-              projectKey: 'mocoding-software_aspnetcore-spa'
+              projectKey: 'mocoding-software_easy-doc-db'
               extraProperties: 'sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/coverage.opencover.xml'
 
           - task: DotNetCoreCLI@2
@@ -92,14 +99,29 @@ stages:
               summaryFileLocation: "$(Agent.TempDirectory)/coverage.cobertura.xml"
             condition: succeededOrFailed()
 
-          - task: DotNetCoreCLI@2
-            displayName: "dotnet pack $(projectName)"
-            inputs:
-              command: pack
-              packagesToPack: "src/$(projectName)/$(projectName).csproj"
-              configuration: $(buildConfiguration)
-              packDirectory: "$(Build.StagingDirectory)/$(projectName)"
-              buildProperties: "Version=$(Build.BuildNumber)"
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDb)
+
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDbAzureStorage)
+
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDbFileSystem)
+
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDbJson)
+
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDbXml)
+
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDbYaml)
 
           - task: PublishBuildArtifacts@1
             displayName: "Publish Artifact: nupkg"
@@ -149,7 +171,7 @@ stages:
                   displayName: 'Update GitHub release'
                   inputs:
                     gitHubConnection: 'mocoding-software'
-                    repositoryName: 'mocoding-software/aspnetcore-spa'
+                    repositoryName: 'mocoding-software/easy-doc-db'
                     action: edit
                     tag: 'v$(Build.BuildNumber)'
                     assets: '$(Pipeline.Workspace)/**/*.nupkg'
