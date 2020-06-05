@@ -7,7 +7,7 @@ namespace Mocoding.EasyDocDb.Core
     internal class Document<T> : IDocument<T>
         where T : class, new()
     {
-        private const int TIMEOUT = 1000 * 2; // 2 seconds timeout to save a document.
+        private const int Timeout = 1000 * 2; // 2 seconds timeout to save a document.
         private readonly string _ref;
         private readonly IDocumentSerializer _serializer;
         private readonly IDocumentStorage _storage;
@@ -30,7 +30,7 @@ namespace Mocoding.EasyDocDb.Core
 
         public Task SyncUpdate(Action<T> updateAction)
         {
-            return Syncronize(async () =>
+            return Synchronize(async () =>
             {
                 updateAction(Data);
                 await SaveInternal();
@@ -39,7 +39,7 @@ namespace Mocoding.EasyDocDb.Core
 
         public Task SyncUpdate(T newData)
         {
-            return Syncronize(async () =>
+            return Synchronize(async () =>
             {
                 Data = newData;
                 await SaveInternal();
@@ -48,12 +48,12 @@ namespace Mocoding.EasyDocDb.Core
 
         public Task Save()
         {
-            return Syncronize(SaveInternal);
+            return Synchronize(SaveInternal);
         }
 
         public Task Delete()
         {
-            return Syncronize(async () =>
+            return Synchronize(async () =>
             {
                 await _storage.Delete(_ref);
                 _onDelete?.Invoke(this);
@@ -76,9 +76,9 @@ namespace Mocoding.EasyDocDb.Core
             _onSave = null; // intended for single use.
         }
 
-        private async Task Syncronize(Func<Task> criticalSectionFunc)
+        private async Task Synchronize(Func<Task> criticalSectionFunc)
         {
-            if (!await _semaphore.WaitAsync(TIMEOUT))
+            if (!await _semaphore.WaitAsync(Timeout))
                 throw new EasyDocDbException($"Timeout! Can't get exclusive access to document.");
 
             try

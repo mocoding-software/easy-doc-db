@@ -26,6 +26,7 @@ variables:
   easyDocDbJson: $(projectName).Json
   easyDocDbXml: $(projectName).Xml
   easyDocDbYaml: $(projectName).Yaml  
+  easyDocDbCsv: $(projectName).Csv  
   
 
 stages:
@@ -122,6 +123,10 @@ stages:
           - template: pack-template.yml
             parameters:
               package: $(easyDocDbYaml)
+
+          - template: pack-template.yml
+            parameters:
+              package: $(easyDocDbCsv)
 
           - task: PublishBuildArtifacts@1
             displayName: "Publish Artifact: nupkg"

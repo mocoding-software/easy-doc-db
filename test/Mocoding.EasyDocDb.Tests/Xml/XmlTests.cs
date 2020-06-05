@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Xml
 {
-    public class XmlTests
+    public class CsvTests
     {
         private readonly Person _person = new Person()
         {

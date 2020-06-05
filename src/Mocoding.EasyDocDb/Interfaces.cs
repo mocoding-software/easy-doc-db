@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mocoding.EasyDocDb
 {
     /// <summary>
-    /// Allows
+    /// Represents abstraction over specific document repository.
     /// </summary>
     public interface IRepository
     {
@@ -17,7 +17,7 @@ namespace Mocoding.EasyDocDb
         /// </summary>
         /// <typeparam name="T">Type of the document.</typeparam>
         /// <param name="conn">Path to file or other reference to where the file is stored on.</param>
-        /// <returns></returns>
+        /// <returns>Document reference.</returns>
         Task<IDocument<T>> Init<T>(string conn)
             where T : class, new();
 
@@ -26,8 +26,8 @@ namespace Mocoding.EasyDocDb
         /// It will read all existing files and populate documents from them.
         /// </summary>
         /// <typeparam name="T">Type of the document.</typeparam>
-        /// <param name="conn">Path to folder where documents are stored</param>
-        /// <returns></returns>
+        /// <param name="conn">Path to folder where documents are stored.</param>
+        /// <returns>Reference to a collection of documents.</returns>
         Task<IDocumentCollection<T>> InitCollection<T>(string conn)
             where T : class, new();
     }
@@ -40,7 +40,7 @@ namespace Mocoding.EasyDocDb
         where T : class, new()
     {
         /// <summary>
-        /// Returns all documents.
+        /// Gets all documents.
         /// </summary>
         /// <value>
         /// The current snapshot of the collection.
@@ -52,19 +52,19 @@ namespace Mocoding.EasyDocDb
         /// The document is added when the document is saved.
         /// </summary>
         /// <param name="initialData">Initial data.</param>
-        /// <returns></returns>
+        /// <returns>Reference to a document.</returns>
         IDocument<T> New(T initialData = null);
     }
 
     /// <summary>
     /// Represents a document and allows certain operations to be performed.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Type of the document.</typeparam>
     public interface IDocument<T>
         where T : new()
     {
         /// <summary>
-        /// Returns the document content.
+        /// Gets the document content.
         /// </summary>
         /// <value>
         /// The data.
@@ -75,26 +75,26 @@ namespace Mocoding.EasyDocDb
         /// Allows to update document data in a thread-safe manner.
         /// </summary>
         /// <param name="data">The data.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents an asynchronous action.</returns>
         Task SyncUpdate(Action<T> data);
 
         /// <summary>
         /// Allows to update the document by replacing all the document content with a new value. Thread-save.
         /// </summary>
         /// <param name="newData">Document data to replace with.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents an asynchronous action.</returns>
         Task SyncUpdate(T newData);
 
         /// <summary>
         /// Allows saving the document data in a thread-safe manner.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents an asynchronous action.</returns>
         Task Save();
 
         /// <summary>
         /// Allows deleting the document data in a thread-safe manner.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents an asynchronous action.</returns>
         Task Delete();
     }
 
@@ -104,7 +104,7 @@ namespace Mocoding.EasyDocDb
     public interface IDocumentSerializer
     {
         /// <summary>
-        /// Identifies the serializer by returning an extension to be used to save documents as files.
+        /// Gets an extension to be used to save documents as files.
         /// </summary>
         /// <value>
         /// The type.
@@ -114,18 +114,18 @@ namespace Mocoding.EasyDocDb
         /// <summary>
         /// Serializes the specified data.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type.</typeparam>
         /// <param name="data">The data.</param>
-        /// <returns></returns>
+        /// <returns>Serialized string representation</returns>
         string Serialize<T>(T data)
             where T : class, new();
 
         /// <summary>
         /// Deserializes the specified content.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">The type.</typeparam>
         /// <param name="content">The content.</param>
-        /// <returns></returns>
+        /// <returns>Deserialized instance of the specific type.</returns>
         T Deserialize<T>(string content)
             where T : class, new();
     }
@@ -161,7 +161,7 @@ namespace Mocoding.EasyDocDb
         /// Called when it is required to enumerate documents using specified collection reference.
         /// </summary>
         /// <param name="collectionRef">The collection reference.</param>
-        /// <returns></returns>
+        /// <returns>List of files.</returns>
         Task<string[]> Enumerate(string collectionRef);
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Mocoding.EasyDocDb
         /// </summary>
         /// <param name="collectionRef">The collection reference.</param>
         /// <param name="name">The name.</param>
-        /// <returns></returns>
+        /// <returns>Reference of the new file.</returns>
         string NewRef(string collectionRef, string name);
     }
 }

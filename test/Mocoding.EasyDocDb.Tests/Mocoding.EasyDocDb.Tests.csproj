@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Csv\Mocoding.EasyDocDb.Csv.csproj" />
     <ProjectReference Include="..\..\src\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
     <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.FileSystem\Mocoding.EasyDocDb.FileSystem.csproj" />
     <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Json\Mocoding.EasyDocDb.Json.csproj" />
