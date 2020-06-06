@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mocoding.EasyDocDb.Core;
 using NSubstitute;
-using NUnit.Framework;
+using Xunit;
 
 namespace Mocoding.EasyDocDb.Tests.Core
 {
@@ -11,7 +11,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
     {
         private const string Ref = "test_ref";
 
-        [Test(Description = "New Document Test")]
+        [Fact(DisplayName = "New Document Test")]
         public void NewDocumentTest()
         {
             var document = new Document<Person>(Ref, null, null);
@@ -19,7 +19,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.NotNull(document.Data);
         }
 
-        [Test(Description = "Save Document Test")]
+        [Fact(DisplayName = "Save Document Test")]
         public async Task SaveDocumentTest()
         {
             var storage = Substitute.For<IDocumentStorage>();
@@ -35,7 +35,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             await storage.Write(Ref, expectedContent);
         }
 
-        [Test(Description = "Load Document Test")]
+        [Fact(DisplayName = "Load Document Test")]
         public async Task LoadDocumentTest()
         {
             var storage = Substitute.For<IDocumentStorage>();
@@ -50,10 +50,10 @@ namespace Mocoding.EasyDocDb.Tests.Core
             await document.Init();
 
             var doc = document.Data;
-            Assert.AreEqual(expectedName, doc.FullName);
+            Assert.Equal(expectedName, doc.FullName);
         }
 
-        [Test(Description = "Delete Callback Test")]
+        [Fact(DisplayName = "Delete Callback Test")]
         public async Task DeleteCallbackTest()
         {
             var storage = Substitute.For<IDocumentStorage>();
@@ -78,7 +78,7 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.False(callbackCalled);
         }
 
-        [Test(Description = "Save Callback Test")]
+        [Fact(DisplayName = "Save Callback Test")]
         public async Task SaveCallbackTest()
         {
             var storage = Substitute.For<IDocumentStorage>();
@@ -101,18 +101,18 @@ namespace Mocoding.EasyDocDb.Tests.Core
             Assert.False(callbackCalled);
         }
 
-        [Test(Description = "Check Exeption")]
-        public void CheckExeption()
+        [Fact(DisplayName = "Check Exception")]
+        public async void CheckException()
         {
             var storage = Substitute.For<IDocumentStorage>();
             var serializer = Substitute.For<IDocumentSerializer>();
             var document = new Document<Person>(Ref, storage, serializer);
 
-            Task.Run(() => document.SyncUpdate(_ => Thread.Sleep(10000)));
+            var task = Task.Run(() => document.SyncUpdate(_ => Thread.Sleep(10000)));
 
-            Exception ex = Assert.ThrowsAsync<EasyDocDbException>(() => Task.Run(() => document.Save()));
+            var ex = await Assert.ThrowsAsync<EasyDocDbException>(() => Task.Run(() => document.Save()));
 
-            Assert.AreEqual("Timeout! Can't get exclusive access to document.", ex.Message);
+            Assert.Equal("Timeout! Can't get exclusive access to document.", ex.Message);
         }
     }
 }

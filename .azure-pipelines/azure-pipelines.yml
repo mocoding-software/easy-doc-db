@@ -1,0 +1,183 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+# name: $(majorVersion).$(minorVersion).$(patchVersion)$(channelVersion)$(buildVersion)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - master
+  tags:
+    include:
+      - v*
+
+pool:
+  vmImage: "ubuntu-18.04"
+
+variables:
+  buildConfiguration: "Release"
+  projectName: "Mocoding.EasyDocDb"
+  solutionFile: "easy-doc-db.sln"  
+  easyDocDb: $(projectName)
+  easyDocDbAzureStorage: $(projectName).AzureStorage
+  easyDocDbFileSystem: $(projectName).FileSystem
+  easyDocDbJson: $(projectName).Json
+  easyDocDbXml: $(projectName).Xml
+  easyDocDbYaml: $(projectName).Yaml  
+  easyDocDbCsv: $(projectName).Csv  
+  
+
+stages:
+  - stage: Build
+    pool:
+      vmImage: "ubuntu-18.04"
+    jobs:
+      - job: Package
+        steps:
+          - task: UseGitVersion@5
+            displayName: "Git Version"
+            inputs:
+              versionSpec: "5.0.0"
+              useConfigFile: true
+              configFilePath: "GitVersion.yml"
+
+          - task: UseDotNet@2
+            displayName: 'Install .NET Core sdk'
+            inputs:
+              packageType: sdk
+              version: 2.0.0
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+              
+          - task: UseDotNet@2
+            displayName: 'Install .NET Core sdk'
+            inputs:
+              packageType: sdk
+              version: 3.1.300
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+
+          - task: DotNetCoreCLI@2
+            displayName: "dotnet restore"
+            inputs:
+              command: restore
+              projects: $(solutionFile)
+
+          - task: SonarCloudPrepare@1
+            displayName: "Sonarcloud - Prepare"
+            inputs:
+              SonarCloud: 'sonarcloud'
+              organization: 'mocoding'
+              scannerMode: 'MSBuild'
+              projectKey: 'mocoding-software_easy-doc-db'
+              extraProperties: 'sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/coverage.opencover.xml'
+
+          - task: DotNetCoreCLI@2
+            displayName: "dotnet build"
+            inputs:
+              command: build
+              projects: $(solutionFile)
+
+          - task: DotNetCoreCLI@2
+            displayName: "dotnet test"
+            inputs:
+              command: test
+              projects: 'test/**/*.Tests.csproj'
+              arguments: "--no-build /p:SkipCodeCoverageReport=true /p:Threshold=80 /p:CoverletOutput=$(Agent.TempDirectory)/"
+
+          - task: SonarCloudAnalyze@1
+            displayName: "Sonarcloud Analyze"
+
+          - task: SonarCloudPublish@1
+            displayName: "Sonarcloud Publish"
+            inputs:
+              pollingTimeoutSec: '300'
+
+          - task: PublishCodeCoverageResults@1
+            displayName: "Public Code Coverage"
+            inputs:
+              codeCoverageTool: "Cobertura"
+              summaryFileLocation: "$(Agent.TempDirectory)/coverage.cobertura.xml"
+            condition: succeededOrFailed()
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDb)
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDbAzureStorage)
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDbFileSystem)
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDbJson)
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDbXml)
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDbYaml)
+
+          - template: pack-template.yml
+            parameters:
+              project: $(easyDocDbCsv)
+
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish Artifact: nupkg"
+            inputs:
+              PathtoPublish: "$(Build.StagingDirectory)"
+              ArtifactName: nupkg
+  - stage: Deploy
+    dependsOn: Build
+    condition: and(succeeded(), contains(variables['Build.Reason'], 'PullRequest'))
+    pool:
+      vmImage: "ubuntu-18.04"
+    jobs:
+      - deployment: DevBuild
+        environment: "dev-builds"
+        strategy:
+          runOnce:
+            deploy:
+              steps:              
+                - task: NuGetCommand@2
+                  displayName: "Publish to nuget (dev-builds)"
+                  inputs:
+                    command: 'push'
+                    packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;'
+                    nuGetFeedType: 'internal'
+                    publishVstsFeed: 'da7703d4-fb22-4933-b869-83f4264b7b84/e1336e71-3540-4a0c-830c-639112685b07'
+                    allowPackageConflicts: true
+  - stage: Release
+    dependsOn: Build
+    condition: and(succeeded(), contains(variables['Build.SourceBranch'], 'tags/v'))
+    pool:
+      vmImage: "ubuntu-18.04"
+    jobs:
+      - deployment: Public
+        environment: "public"
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: NuGetCommand@2
+                  displayName: "Publish"
+                  inputs:
+                    command: 'push'
+                    packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;'
+                    nuGetFeedType: 'external'
+                    publishFeedCredentials: 'public-nuget'
+                - task: GitHubRelease@1
+                  displayName: 'Update GitHub release'
+                  inputs:
+                    gitHubConnection: 'mocoding-software'
+                    repositoryName: 'mocoding-software/easy-doc-db'
+                    action: edit
+                    tag: 'v$(Build.BuildNumber)'
+                    assets: '$(Pipeline.Workspace)/**/*.nupkg'
+                    assetUploadMode: replace

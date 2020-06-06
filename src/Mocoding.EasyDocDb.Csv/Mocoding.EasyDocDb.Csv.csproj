@@ -3,13 +3,16 @@
   
   <PropertyGroup>
     <Description>Yaml Serializer for EasyDocDb - stores documents as Yaml files.</Description>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;yml;yaml</PackageTags>    
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="15.0.5" />
+  </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />  
-    <PackageReference Include="YamlDotNet" Version="8.1.2" />    
+    <ProjectReference Include="..\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />    
   </ItemGroup>
 
 </Project>

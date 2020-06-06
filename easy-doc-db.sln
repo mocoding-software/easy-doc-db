@@ -1,13 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{EDE281B3-1CA3-4A6A-B567-773464BF83B3}"
-	ProjectSection(SolutionItems) = preProject
-		_stylecop\StyleCop.ruleset = _stylecop\StyleCop.ruleset
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{926E5B6B-7208-4093-B1BD-3D38BA3135BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{DCC49379-7DBF-4519-A71D-42611C3578CD}"
@@ -30,7 +25,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocoding.EasyDocDb.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocoding.EasyDocDb.FileSystem", "src\Mocoding.EasyDocDb.FileSystem\Mocoding.EasyDocDb.FileSystem.csproj", "{F818ECAF-CBC8-4A48-A8A3-F54025000BE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mocoding.EasyDocDb.AzureStorage", "src\Mocoding.EasyDocDb.AzureStorage\Mocoding.EasyDocDb.AzureStorage.csproj", "{7EFB67A7-4D43-49C4-A0FD-56B68C735166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocoding.EasyDocDb.AzureStorage", "src\Mocoding.EasyDocDb.AzureStorage\Mocoding.EasyDocDb.AzureStorage.csproj", "{7EFB67A7-4D43-49C4-A0FD-56B68C735166}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{709D4BE1-2609-4CD2-8FFF-A67A498A51D8}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		_stylecop\StyleCop.ruleset = _stylecop\StyleCop.ruleset
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mocoding.EasyDocDb.Csv", "src\Mocoding.EasyDocDb.Csv\Mocoding.EasyDocDb.Csv.csproj", "{C13E9811-951C-4ED0-8EEC-014CBCD935AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +78,10 @@ Global
 		{7EFB67A7-4D43-49C4-A0FD-56B68C735166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EFB67A7-4D43-49C4-A0FD-56B68C735166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EFB67A7-4D43-49C4-A0FD-56B68C735166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C13E9811-951C-4ED0-8EEC-014CBCD935AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C13E9811-951C-4ED0-8EEC-014CBCD935AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C13E9811-951C-4ED0-8EEC-014CBCD935AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C13E9811-951C-4ED0-8EEC-014CBCD935AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +96,7 @@ Global
 		{8545C6C3-4033-42BF-A673-2826953DB7B7} = {08BCCC57-3049-4921-AE52-B9CE671E1F82}
 		{F818ECAF-CBC8-4A48-A8A3-F54025000BE2} = {926E5B6B-7208-4093-B1BD-3D38BA3135BB}
 		{7EFB67A7-4D43-49C4-A0FD-56B68C735166} = {926E5B6B-7208-4093-B1BD-3D38BA3135BB}
+		{C13E9811-951C-4ED0-8EEC-014CBCD935AA} = {926E5B6B-7208-4093-B1BD-3D38BA3135BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C1FDCE5-D9D5-4C1E-969D-800150C10BB5}

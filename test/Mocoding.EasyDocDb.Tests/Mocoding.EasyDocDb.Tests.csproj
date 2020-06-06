@@ -1,16 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Mocoding.EasyDocDb.Tests Class Library</Description>
-    <Authors>Denys Miasoutov</Authors>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Mocoding.EasyDocDb.Tests</AssemblyName>
-    <PackageId>Mocoding.EasyDocDb.Tests</PackageId>
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <CodeAnalysisRuleSet>..\..\_stylecop\StyleCop.ruleset</CodeAnalysisRuleSet>
+    <Authors>MOCODING LLC, Dennis Miasoutov</Authors>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CodeAnalysisRuleSet>..\..\StyleCop.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Csv\Mocoding.EasyDocDb.Csv.csproj" />
     <ProjectReference Include="..\..\src\Mocoding.EasyDocDb\Mocoding.EasyDocDb.csproj" />
     <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.FileSystem\Mocoding.EasyDocDb.FileSystem.csproj" />
     <ProjectReference Include="..\..\src\Mocoding.EasyDocDb.Json\Mocoding.EasyDocDb.Json.csproj" />
@@ -19,12 +16,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.6.1" />
-    <PackageReference Include="NSubstitute" Version="3.1.0" />
-    <PackageReference Include="NUnit" Version="3.10.1" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
-    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Include="coverlet.msbuild" Version="2.9.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.4" />
+    <PackageReference Include="Microsoft.CodeCoverage" Version="16.6.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="NSubstitute" Version="4.2.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="XunitXml.TestLogger" Version="2.1.26" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

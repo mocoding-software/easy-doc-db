@@ -35,7 +35,7 @@ namespace EasyDocDb.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            IRepository repository = new EmbeddedRepository(new JsonSerializer());
+            IRepository repository = new Repository(new JsonSerializer(), new EmbeddedStorage());
             var users = repository.InitCollection<User>("UsersData");
             users.Wait();
             services.AddSingleton(users.Result);

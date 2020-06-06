@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 [assembly: InternalsVisibleTo("Mocoding.EasyDocDb.Tests")]
 namespace Mocoding.EasyDocDb.FileSystem
 {
-    internal class EmbeddedStorage : IDocumentStorage
+    public class EmbeddedStorage : IDocumentStorage
     {
         public async Task<string> Read(string @ref)
         {

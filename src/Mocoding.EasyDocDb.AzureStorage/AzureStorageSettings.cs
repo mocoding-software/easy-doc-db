@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mocoding.AspNetCore.ODataApi.EasyDocDb.AzureStorage
+﻿namespace Mocoding.EasyDocDb.AzureStorage
 {
     public class AzureStorageSettings
     {
