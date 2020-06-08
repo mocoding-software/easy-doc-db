@@ -3,8 +3,8 @@
   
   <PropertyGroup>
     <Description>EasyDocDb - embedded nosql document persistance for .NET Core.</Description>
-    <TargetFramework>netstandard1.0</TargetFramework>
-    <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json;xml;yml</PackageTags>        
+    <TargetFrameworks>netstandard1.0;netstandard1.3;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json;xml;yml</PackageTags>            
   </PropertyGroup>  
 
   <ItemGroup>

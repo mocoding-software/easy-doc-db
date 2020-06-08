@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <Description>Xml Serializer for EasyDocDb - stores documents as XML files.</Description>    
-    <TargetFramework>netstandard1.3</TargetFramework>    
+    <TargetFrameworks>netstandard1.0;netstandard1.3</TargetFrameworks>    
     <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json</PackageTags>    
   </PropertyGroup>
 

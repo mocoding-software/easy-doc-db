@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../ProjectBuildProperties.targets"/>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../ProjectBuildProperties.targets" />
 
   <PropertyGroup>
     <Description>Json Serializer for EasyDocDb - stores documents as JSON files.</Description>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>netstandard1.0;netstandard1.3;netstandard2.0</TargetFrameworks>
     <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;json</PackageTags>  
   </PropertyGroup>
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../ProjectBuildProperties.targets"/>
   <PropertyGroup>
     <Description>Embedded storage for EasyDocDb - stores documents as files on a local drive.</Description>
