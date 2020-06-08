@@ -10,7 +10,7 @@
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <LangVersion>8.0</LangVersion>
       <PackageIcon>icon.png</PackageIcon>
-      <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
 
     <ItemGroup>    
