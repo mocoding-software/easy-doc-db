@@ -5,7 +5,7 @@
       <RepositoryUrl>https://github.com/mocoding-software/easy-doc-db</RepositoryUrl>
       <CodeAnalysisRuleSet>..\..\StyleCop.ruleset</CodeAnalysisRuleSet>
       <Authors>Dennis Miasoutov</Authors>
-      <Copyright>MOCODING LLC</Copyright>
+      <Copyright>© MOCODING LLC. All rights reserved.</Copyright>
       <DebugType>Full</DebugType>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <LangVersion>8.0</LangVersion>
