@@ -3,7 +3,7 @@
   
   <PropertyGroup>
     <Description>Yaml Serializer for EasyDocDb - stores documents as Yaml files.</Description>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFrameworks>netstandard1.3;netstandard2.1</TargetFrameworks>
     <PackageTags>net core;netstandard;embedded;database;document db;storage;nosql;docdb;yml;yaml</PackageTags>    
   </PropertyGroup>
 

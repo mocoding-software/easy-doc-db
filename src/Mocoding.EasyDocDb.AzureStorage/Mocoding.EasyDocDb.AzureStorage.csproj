@@ -3,8 +3,8 @@
   
   <PropertyGroup>
     <Description>Azure storage for EasyDocDb - stores documents as files in Azure (as Blobs).</Description>
-    <TargetFramework>netstandard1.3</TargetFramework>
-    <PackageTags>netcore;azure;blob;database;document db;nosql;docdb;json;serializer</PackageTags>        
+    <TargetFrameworks>netstandard1.3;netstandard2.1</TargetFrameworks>
+    <PackageTags>netcore;azure;blob;database;document db;nosql;docdb;json;serializer</PackageTags>    
   </PropertyGroup>  
 
   <ItemGroup>
