@@ -8,6 +8,8 @@
       <DebugType>Full</DebugType>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <LangVersion>8.0</LangVersion>
+      <Icon>icon.png</Icon>
+      <License type="file">LICENSE.txt</License>
     </PropertyGroup>
 
     <ItemGroup>    
