@@ -1,5 +1,5 @@
 <Project>
-    <PropertyGroup>            
+    <PropertyGroup>                  
       <PackageProjectUrl>https://github.com/mocoding-software/easy-doc-db</PackageProjectUrl>      
       <RepositoryType>git</RepositoryType>
       <RepositoryUrl>https://github.com/mocoding-software/easy-doc-db</RepositoryUrl>
@@ -11,6 +11,8 @@
       <LangVersion>8.0</LangVersion>
       <PackageIcon>icon.png</PackageIcon>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
+      <PackageIconUrl>https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/icon.png</PackageIconUrl>     
+      <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/easy-doc-db/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
     <ItemGroup>    
